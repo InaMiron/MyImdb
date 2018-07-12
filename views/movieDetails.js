@@ -15,6 +15,10 @@ window.onload=function(){
 			//getting the container element
 			const postDetailsContainer=document.getElementById('movieDetailsContainer');
 			//creating the elements for display
+
+			const breakPoint=document.createElement('hr');
+			breakPoint.setAttribute('id', 'divider');
+
 			const postTitle=document.createElement('h3');
 			postTitle.innerHTML=currentMovie.Title;
 
@@ -23,60 +27,60 @@ window.onload=function(){
 			postPoster.classList.add('img-size');
 
 			const postPlot=document.createElement('p');
-			postPlot.innerHTML= "Plot: " + currentMovie.Plot;
+			postPlot.innerHTML= "<span>Plot</span>:" + "&nbsp;" + currentMovie.Plot;
 			
 			const postActors=document.createElement('p');
-			postActors.innerHTML= "Actors: " + currentMovie.Actors;
+			postActors.innerHTML= "<span>Actors</span>:  " + "&nbsp;" + currentMovie.Actors;
 			
 			const postAwards=document.createElement('p');
-			postAwards.innerHTML= "Awards: " + currentMovie.Awards;
+			postAwards.innerHTML= "<span>Awards</span>:  " + "&nbsp;" + currentMovie.Awards;
 
 			const postRuntime=document.createElement('p');
-			postRuntime.innerHTML= "Runtime: " + currentMovie.Runtime;
+			postRuntime.innerHTML= "<span>Runtime</span>: " + "&nbsp;" + currentMovie.Runtime;
 
 			const postCountry=document.createElement('p');
-			postCountry.innerHTML= "Country: " + currentMovie.Country;
+			postCountry.innerHTML= "<span>Country</span>: " + "&nbsp;" + currentMovie.Country;
 
 			const postProduction=document.createElement('p');
-			postProduction.innerHTML= "Production: " + currentMovie.Production;
+			postProduction.innerHTML= "<span>Production</span>: " + "&nbsp;" + currentMovie.Production;
 
 			const postGenre=document.createElement('p');
-			postGenre.innerHTML= "Genre: " + currentMovie.Genre;
+			postGenre.innerHTML= "<span>Genre</span>: " + "&nbsp;" + currentMovie.Genre;
 
 			const postLanguage=document.createElement('p');
-			postLanguage.innerHTML= "Language: " + currentMovie.Language;
+			postLanguage.innerHTML= "<span>Language</span>: " + "&nbsp;" + currentMovie.Language;
 
 			const postMetascore=document.createElement('p');
-			postMetascore.innerHTML= "Metascore: " + currentMovie.Metascore;
+			postMetascore.innerHTML= "<span>Metascore</span>: " + "&nbsp;" + currentMovie.Metascore;
 
 			const postRated=document.createElement('p');
-			postRated.innerHTML= "Rate: " + currentMovie.Rated;
+			postRated.innerHTML= "<span>Rate</span>: " + "&nbsp;" + currentMovie.Rated;
 
 			const postReleased=document.createElement('p');
-			postReleased.innerHTML= "Release Date: " + currentMovie.Released;
+			postReleased.innerHTML= "<span>Release Date</span>: " + "&nbsp;" + currentMovie.Released;
 
 			const postType=document.createElement('p');
-			postType.innerHTML= "Genre: " + currentMovie.Type;
+			postType.innerHTML= "<span>Genre</span>: " + "&nbsp;" + currentMovie.Type;
 
 			const postYear=document.createElement('p');
-			postYear.innerHTML= "Release Date: " + currentMovie.Year;
+			postYear.innerHTML= "<span>Release Date</span>: " + "&nbsp;" + currentMovie.Year;
 
 			const postBoxOffice=document.createElement('p');
-			postBoxOffice.innerHTML= "BoxOffice: " + currentMovie.BoxOffice;
+			postBoxOffice.innerHTML= "<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
 
 			const postDVD=document.createElement('p');
-			postDVD.innerHTML= "Dvd: " + currentMovie.DVD;
+			postDVD.innerHTML= "<span>Dvd</span>: " + "&nbsp;" + currentMovie.DVD;
 
 			const postimdbRating=document.createElement('p');
-			postimdbRating.innerHTML= "Imdb Rating: " + currentMovie.imdbRating;
+			postimdbRating.innerHTML= "<span>Imdb Rating</span>: " + "&nbsp;" + currentMovie.imdbRating;
 
 			const postimdbVotes=document.createElement('p');
-			postimdbVotes.innerHTML= "Imdb Votes: " + currentMovie.imdbVotes;
+			postimdbVotes.innerHTML= "<span>Imdb Votes</span>: " + "&nbsp;" + currentMovie.imdbVotes;
 
 			const postWebsite=document.createElement('a');
 			postWebsite.setAttribute('href',currentMovie.Website);
 			postWebsite.setAttribute('target','blank');
-			postWebsite.innerHTML=currentMovie.Website+'<br>';
+			postWebsite.innerHTML="<span>Movie website</span>:</a> " + "&nbsp;" + currentMovie.Website+'<br>';
 
 
 			
@@ -91,6 +95,7 @@ window.onload=function(){
 			postDetailsContainer.appendChild(postYear);
 			postDetailsContainer.appendChild(postRuntime);
 			postDetailsContainer.appendChild(postDVD);
+			postDetailsContainer.appendChild(breakPoint);
 			postDetailsContainer.appendChild(postCountry);
 			postDetailsContainer.appendChild(postProduction);
 			postDetailsContainer.appendChild(postGenre);
