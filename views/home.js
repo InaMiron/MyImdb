@@ -39,7 +39,7 @@ function Onloaded(){
 
 				const title=document.createElement("a");
 
-				title.setAttribute('href','file:///C:/final-project/fiiireloaded/pages/movieDetails.html?movieId='+item._id);
+				title.setAttribute('href','file:///Users/mariacorseu/Desktop/fiiireloaded-master%20Nouu/pages/movieDetails.html?movieId='+item._id);
 
 				title.setAttribute('target','blank');
 				title.innerHTML=item.Title+'<br>';

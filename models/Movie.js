@@ -110,7 +110,7 @@ class MovieDetails extends Movie{
     })
   }
 
-        editMovie(id,data) {
+      editMovie(id,data) {
 
           return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies/' + id,{
              method: "PUT",
@@ -128,5 +128,7 @@ class MovieDetails extends Movie{
             }
 
           });
+      }
+
 }
     

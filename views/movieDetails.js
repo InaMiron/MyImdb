@@ -144,6 +144,7 @@ window.onload=function(){
 				updateMovie.editMovie(id,data); 
 			});
 
+
 		//complex code for aan array to display the objects from within
 		let postRates="";
 		const postRatings=document.createElement('div');
