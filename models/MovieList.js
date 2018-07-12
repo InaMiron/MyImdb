@@ -39,5 +39,37 @@ class Movies {
 			}
 		});
 	}
+	searchData(text) {
+		this.itemList = [];
+		return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies?Title=' + text, {
+			method : 'GET',
+			success : (response) => {
+				console.log("resonse", response.results);
+				for(let i = 0; i < response.results.length; i++) {
+					const searchItem = response.results[i];
+					const searchModel = new Movie();
+					searchModel._id = searchItem._id;
+					searchModel.Title = searchItem.Title;
+					searchModel.Year = searchItem.Year;
+					searchModel.Runtime = searchItem.Runtime;
+					searchModel.Genre = searchItem.Genre;
+					searchModel.Language = searchItem.Language;
+					searchModel.Country = searchItem.Country;
+					searchModel.Poster = searchItem.Poster;
+					searchModel.imdbRating = searchItem.imdbRating;
+					searchModel.imdbVotes = searchItem.imdbVotes;
+					searchModel.imdbID = searchItem.imdbID;
+					searchModel.Type = searchItem.Type;
+
+					this.itemList.push(searchModel);
+				}
+			},
+			error : (xhr) => {
+				const parsedMessage = JSON.parse(xhr.responseText);
+			    alert('STATUS ' + xhr.status + '. ' + parsedMessage.message);
+			} 
+		})
+	}
+
 }
 
