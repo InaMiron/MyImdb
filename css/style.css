@@ -35,16 +35,17 @@ body {
     justify-content: space-between;
     padding-top: 10px;
 }
-
+.container #movieListContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 33%;
+    height: auto;
+}
 .movieDetailsContainer{
     overflow:auto;
 }
 
-#container {
-    display:flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
 
 footer {
     position: fixed;
