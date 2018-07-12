@@ -41,12 +41,10 @@ class Movie {
   deleteMovie(id) {
     return $.ajax("https://ancient-caverns-16784.herokuapp.com/movies/" + id, {
       headers: {
-      'X-Auth-Token' : token
-      },
+      'X-Auth-Token' : localStorage.getItem('loginToken')},
       method:"DELETE",
       success: (response) => {
-        console.log(response);
-        alert("The movie was succesfully deleted");
+        window.location.reload(true);
       },
       error: (xhr) => {
         const parsedMessage = JSON.parse(xhr.responseText);

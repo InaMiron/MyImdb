@@ -29,11 +29,21 @@ body {
 
 .img-size{
 	width:22%;
-	height:auto;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10px;
 }
 
 .movieDetailsContainer{
     overflow:auto;
+}
+
+#container {
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 footer {
@@ -46,9 +56,6 @@ footer {
     color: white;
     text-align: center;
     color: black;
-    font-style: 
-
-.item {
-    display:block;
+    font-style: normal;
 }
 
