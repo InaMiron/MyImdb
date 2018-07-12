@@ -102,6 +102,48 @@ window.onload=function(){
 		postDetailsContainer.appendChild(postimdbVotes);
 		postDetailsContainer.appendChild(postWebsite);
 
+		// EDIT 
+
+			const editButton = document.getElementById("edit-button"); 
+			editButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				const title=document.querySelector("input[name='movieName']");
+				const year=document.querySelector("input[name='movieYear']");
+				const type=document.querySelector("input[name='movieType']");
+				const genre=document.querySelector("input[name='movieGenre']");
+				const poster=document.querySelector("input[name='moviePoster']");
+				title.value = currentMovie.Title;
+				year.value = currentMovie.Year;
+				type.value = currentMovie.Type;
+				genre.value = currentMovie.Genre;
+				poster.value = currentMovie.Poster;
+
+			});
+
+			const saveButton = document.getElementById("save-changes");
+			saveButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				const id=getUrlParameter("movieId");
+				console.log(id);
+				const title=document.querySelector("input[name='movieName']");
+				const year=document.querySelector("input[name='movieYear']");
+				const type=document.querySelector("input[name='movieType']");
+				const genre=document.querySelector("input[name='movieGenre']");
+				const poster=document.querySelector("input[name='moviePoster']");
+
+				const data={
+					Title:title.value,
+					Year:year.value,
+					Type:type.value,
+					Genre:genre.value,
+					Poster:poster.value
+				};
+				console.log(data);
+
+				const updateMovie = new MovieDetails();
+				updateMovie.editMovie(id,data); 
+			});
+
 		//complex code for aan array to display the objects from within
 		let postRates="";
 		const postRatings=document.createElement('div');
