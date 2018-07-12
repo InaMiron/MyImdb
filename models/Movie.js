@@ -20,33 +20,31 @@ class Movie {
   }
   
  addMovie(data) {
-  return $.ajax(dapiUrl, {
-    headers: {
-      'X-Auth-Token' : token
-    },
-    method:"POST",
-    data: data,
-    success:(response) => {
-      console.log(response);
-      alert("Movie was succesfully added!");
-      location.reload(true);
-    },
-    error:(xhr) => {
-      const parsedMessage = JSON.parse(xhr.responseText);
-      alert('STATUS ' + xhr.status + '. ' + parsedMessage.message);
-    }
-  })
+    return $.ajax(dapiUrl, {
+      headers: {
+        'X-Auth-Token' : token
+      },
+      method:"POST",
+      data: data,
+      success:(response) => {
+        console.log(response);
+        alert("Movie was succesfully added!");
+        location.reload(true);
+      },
+      error:(xhr) => {
+        const parsedMessage = JSON.parse(xhr.responseText);
+        alert('STATUS ' + xhr.status + '. ' + parsedMessage.message);
+      }
+    })
   }
 
   deleteMovie(id) {
     return $.ajax("https://ancient-caverns-16784.herokuapp.com/movies/" + id, {
       headers: {
-      'X-Auth-Token' : token
-      },
+      'X-Auth-Token' : localStorage.getItem('loginToken')},
       method:"DELETE",
       success: (response) => {
-        console.log(response);
-        alert("The movie was succesfully deleted");
+        window.location.reload(true);
       },
       error: (xhr) => {
         const parsedMessage = JSON.parse(xhr.responseText);

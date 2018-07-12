@@ -1,2 +1,2 @@
 env.js
-var path = "file:///E:/Final%20Project/fiiireloaded/pages/movieDetails.html?movieId="
+var path = alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);

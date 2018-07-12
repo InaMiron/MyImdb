@@ -9,7 +9,6 @@ window.onload=function(){
 		.then(createDetails)
 		.catch(errorMsg);
 
-
 		function createDetails(){
 			console.log(currentMovie);
 			//getting the container element
@@ -121,14 +120,22 @@ window.onload=function(){
 
 		function errorMsg(xhr){
 			console.log('Something happened:',xhr);
-		}
 
-		/*** It retrieves a query (URL) parameter value** 
-		It expects you to send the parameter key(before '=')* **/
-		function getUrlParameter(name) {
-		name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-		const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-		const results = regex.exec(location.search);
-		return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-		};
-}
+		}
+		postRatings.innerHTML=postRates;
+		postDetailsContainer.appendChild(postRatings);
+			
+	}
+
+	function errorMsg(xhr){
+		console.log('Something happened:',xhr);
+	}
+
+	/*** It retrieves a query (URL) parameter value** 
+	It expects you to send the parameter key(before '=')* **/
+	function getUrlParameter(name) {
+	name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+	const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+	const results = regex.exec(location.search);
+	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+	};
