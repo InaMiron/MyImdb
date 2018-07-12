@@ -1,10 +1,10 @@
 body {
     background: url("https://4.bp.blogspot.com/-cP-2hq17x6Q/VsWR8UKOQlI/AAAAAAAABQE/3wnhoOxbrPI/s1600/deadpool-movie-wallpaper-4k-3840x2160.jpg") no-repeat center fixed;
     background-size: cover;
+    padding-bottom: 22px;
 }
 
 .container {
-    color: white;
     display: flex;
     justify-content: space-between;
 }
@@ -38,6 +38,11 @@ body {
 
 .movieDetailsContainer{
     overflow:auto;
+}
+.movieBox{
+    border: solid 3px black;
+    margin: 10px;
+    padding: 10px;
 }
 
 
