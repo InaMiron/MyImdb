@@ -25,12 +25,11 @@ function Onloaded(){
 	viewData.getMovies()
 	.then(createMovieList)
 	.catch(CreateMovieListError);
-
+	const containElements=document.getElementById("movieListContainer");
 
 
 	function createMovieList(){
 		console.log(viewData.itemList);
-		const containElements=document.getElementById("movieListContainer");
 		
 			for(let i=0;i<viewData.itemList.length;i++){
 
@@ -78,6 +77,7 @@ function Onloaded(){
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
 			event.preventDefault();
+			
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
 			const password = document.querySelector("[name='psw']").value;
@@ -136,11 +136,22 @@ function Onloaded(){
 			const userRegister = new User();
 			userRegister.registerData(dataRegister);
 		})
+		//search button
+		const searchBtn = document.getElementById("navbar-submit-button");
+		searchBtn.addEventListener("click",(event) => {
+			event.preventDefault();
+			containElements.innerHTML = '';
+			const searchText = document.getElementById('searchBarInput').value;
+			console.log("text search", searchText);
+			viewData.searchData(searchText).then(createMovieList);
+		})
 	}
+	
 
 	function CreateMovieListError(xhr){
 		console.log("error",xhr);
 	}
+	
 
 
 let token = localStorage.getItem("loginToken");
