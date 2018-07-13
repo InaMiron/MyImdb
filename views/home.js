@@ -161,28 +161,28 @@ function Onloaded(){
 		})
 
 		// pagination functions
-		document.getElementById("prev").addEventListener("click", (e) => {
-			document.getElementById("current").classList.remove("active");
-			document.getElementById("next").classList.remove("active");
-			document.getElementById("prev").classList.add("active");
+		document.getElementById("first").addEventListener("click", (e) => {
+			document.getElementById("thirde").classList.remove("active");
+			document.getElementById("second").classList.remove("active");
+			document.getElementById("first").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
-			viewData.getMovies(10).then(createMovieList);
+			viewData.getMovies(0).then(createMovieList);
 		});
 		
-		document.getElementById("current").addEventListener("click", (e) => {
-			document.getElementById("prev").classList.remove("active");
-			document.getElementById("next").classList.remove("active");
-			document.getElementById("current").classList.add("active");
+		document.getElementById("second").addEventListener("click", (e) => {
+			document.getElementById("first").classList.remove("active");
+			document.getElementById("thirde").classList.remove("active");
+			document.getElementById("second").classList.add("active");
 			event.preventDefault();
 		    containElements.innerHTML = '';
-			viewData.getMovies(0).then(createMovieList);
+			viewData.getMovies(10).then(createMovieList);
 		});	
 
-		document.getElementById("next").addEventListener("click", (e) => {
-			document.getElementById("current").classList.remove("active");
-			document.getElementById("prev").classList.remove("active");
-			document.getElementById("next").classList.add("active");
+		document.getElementById("thirde").addEventListener("click", (e) => {
+			document.getElementById("first").classList.remove("active");
+			document.getElementById("second").classList.remove("active");
+			document.getElementById("thirde").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
 			viewData.getMovies(20).then(createMovieList);
