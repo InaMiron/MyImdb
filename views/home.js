@@ -36,7 +36,7 @@ function Onloaded(){
 				const item=viewData.itemList[i];
 				//console.log(item);
 				const boxMovie = document.createElement("div");
-				boxMovie.setAttribute('href',basePath + 'pages/home.html.html');
+				boxMovie.setAttribute('href',"");
 				const title = document.createElement("h3");
 				const anchor = document.createElement("a");
 				const picture=document.createElement('img');
@@ -52,7 +52,7 @@ function Onloaded(){
 				picture.setAttribute('alt','404');
 				picture.setAttribute('width','200px');
 				button.setAttribute('data-id',item._id);
-				anchor.setAttribute('href',basePath + 'pages/movieDetails.html?movieId='+item._id);
+				anchor.setAttribute('href',+item._id);
 				picture.classList.add('img-size');
 				button.classList.add('remove');
 
@@ -70,13 +70,8 @@ function Onloaded(){
 				boxMovie.appendChild(year);
 				boxMovie.appendChild(button);
 
-				containElements.appendChild(boxMovie);
-
-
-				
-				
+				containElements.appendChild(boxMovie);	
 			}
-
 		//delete function should be outside the for cycle
 		$("#movieListContainer").delegate('.remove','click',function (){
 				const id=this.getAttribute('data-id');
@@ -167,18 +162,27 @@ function Onloaded(){
 
 		// pagination functions
 		document.getElementById("prev").addEventListener("click", (e) => {
-				event.preventDefault();
-			    containElements.innerHTML = '';
-				viewData.getMovies(10).then(createMovieList);
+			document.getElementById("current").classList.remove("active");
+			document.getElementById("next").classList.remove("active");
+			document.getElementById("prev").classList.add("active");
+			event.preventDefault();
+			containElements.innerHTML = '';
+			viewData.getMovies(10).then(createMovieList);
 		});
 		
 		document.getElementById("current").addEventListener("click", (e) => {
+			document.getElementById("prev").classList.remove("active");
+			document.getElementById("next").classList.remove("active");
+			document.getElementById("current").classList.add("active");
 			event.preventDefault();
 		    containElements.innerHTML = '';
 			viewData.getMovies(0).then(createMovieList);
 		});	
 
 		document.getElementById("next").addEventListener("click", (e) => {
+			document.getElementById("current").classList.remove("active");
+			document.getElementById("prev").classList.remove("active");
+			document.getElementById("next").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
 			viewData.getMovies(20).then(createMovieList);
