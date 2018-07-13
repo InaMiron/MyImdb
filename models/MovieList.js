@@ -1,36 +1,34 @@
 /* declaring a api variable as global which takes the url as value*/
 const apiUrl='https://ancient-caverns-16784.herokuapp.com/movies';
+let paginationUrl = apiUrl + "?take=10&skip=";
 class Movies {
 	constructor(){
 		this.itemList=[];
 	}
 /* making the get request method within the "father class" and making a new class call within*/
-	getMovies(){
-		return $.ajax(apiUrl,{
+	getMovies(number) {
+		return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies?take=10&skip=' + number, {
 			method:'GET',
-			success:(e)=>{
-				//console.log(e);
-				for(let i=0;i<e.results.length;i++){
-					const item=e.results[i];
-					const data={
-						_id:item._id,
-						Title:item.Title,
-						Year:item.Year,
-						Runtime:item.Runtime,
-						Genre:item.Genre,
-						Language:item.Lanfuage,
-						Country:item.Country,
-						Poster:item.Poster,
-						imdbRating:item.imdbRating,
-						imdbVotes:item.imdbVotes,
-						imdbID:item.imdbID,
-						Type:item.Type
-					}
-					//here we create the new object trough the previously created Movie class
-
-					const movieModel=new Movie(data);
-					//console.log(movieModel);
-					this.itemList.push(data);
+			success:(response)=>{
+				this.itemList = [];
+				console.log("get response",response);
+				for(let i=0;i<response.results.length;i++){
+					const item=response.results[i];
+					const movieModel=new Movie();
+					movieModel._id = item._id;
+					movieModel.Title = item.Title;
+					movieModel.Year = item.Year;
+					movieModel.Runtime = item.Runtime;
+					movieModel.Genre = item.Genre;
+					movieModel.Language = item.Language;
+					movieModel.Country = item.Country;
+					movieModel.Poster = item.Poster;
+					movieModel.imdbRating = item.imdbRating;
+					movieModel.imdbVotes = item.imdbVotes;
+					movieModel.imdbID = item.imdbID;
+					movieModel.Type = item.Type;
+					
+					this.itemList.push(movieModel);
 				}
 			},
 			error:(xhr)=>{
@@ -39,6 +37,7 @@ class Movies {
 			}
 		});
 	}
+
 	searchData(text) {
 		this.itemList = [];
 		return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies?Title=' + text, {
@@ -70,6 +69,6 @@ class Movies {
 			} 
 		})
 	}
-
+	
 }
 

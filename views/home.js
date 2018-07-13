@@ -3,6 +3,8 @@ window.onload=Onloaded;
 
 
 function Onloaded(){
+	
+	//logOut
 	const logoutUser=new User();
 	const logoutButton=document.getElementById('logout-button');
 	logoutButton.addEventListener('click',(e)=>{
@@ -22,7 +24,7 @@ function Onloaded(){
 
 
 	const viewData=new Movies();
-	viewData.getMovies()
+	viewData.getMovies(0)
 	.then(createMovieList)
 	.catch(CreateMovieListError);
 	const containElements=document.getElementById("movieListContainer");
@@ -30,7 +32,6 @@ function Onloaded(){
 
 	function createMovieList(){
 		console.log(viewData.itemList);
-		
 			for(let i=0;i<viewData.itemList.length;i++){
 
 				const item=viewData.itemList[i];
@@ -74,19 +75,20 @@ function Onloaded(){
 				
 				
 			}
-			//delete function should be outside the for cycle
-			$("#movieListContainer").delegate('.remove','click',function (){
-					const id=this.getAttribute('data-id');
-					//console.log(id);
-					const deleteMovie=new Movie();
-					deleteMovie.deleteMovie(id)
-					.then(function(){
-						console.log('success');
-					})
-					.catch(function(xhr){
-						console.log('Error!:',xhr);
-					});
+
+		//delete function should be outside the for cycle
+		$("#movieListContainer").delegate('.remove','click',function (){
+				const id=this.getAttribute('data-id');
+				//console.log(id);
+				const deleteMovie=new Movie();
+				deleteMovie.deleteMovie(id)
+				.then(function(){
+					console.log('success');
+				})
+				.catch(function(xhr){
+					console.log('Error!:',xhr);
 				});
+			});
 		}
 		//Log In functionality
 		//Submit button
@@ -158,17 +160,34 @@ function Onloaded(){
 			event.preventDefault();
 			containElements.innerHTML = '';
 			const searchText = document.getElementById('searchBarInput').value;
-			console.log("text search", searchText);
+			//console.log("text search", searchText);
 			viewData.searchData(searchText).then(createMovieList);
 		})
+
+		// pagination functions
+		document.getElementById("prev").addEventListener("click", (e) => {
+				event.preventDefault();
+			    containElements.innerHTML = '';
+				viewData.getMovies(10).then(createMovieList);
+		});
+		
+		document.getElementById("current").addEventListener("click", (e) => {
+			event.preventDefault();
+		    containElements.innerHTML = '';
+			viewData.getMovies(0).then(createMovieList);
+		});	
+
+		document.getElementById("next").addEventListener("click", (e) => {
+			event.preventDefault();
+			containElements.innerHTML = '';
+			viewData.getMovies(20).then(createMovieList);
+		});	
 	}
 	
 
 	function CreateMovieListError(xhr){
 		console.log("error",xhr);
 	}
-	
-
 
 let token = localStorage.getItem("loginToken");
 // console.log("global token = ", token);
@@ -226,4 +245,5 @@ $( "#openerReg" ).on( "click", function() {
 $( "#openerAdd" ).on( "click", function() {
       $( "#addMovieContainer" ).dialog( "open" );
     });
-});  
+}); 
+
