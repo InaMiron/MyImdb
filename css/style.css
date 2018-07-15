@@ -36,12 +36,6 @@ body {
     overflow:auto;
 }
 
-#contain {
-    display:flex;
-    justify-content:
-    flex-direction:row;
-}
-
 footer {
     position: fixed;
     left: 0;
