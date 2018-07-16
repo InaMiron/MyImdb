@@ -16,60 +16,74 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
 	<script  type="text/javascript" src="../models/Movie.js"></script>
     <script type="text/javascript" src="../models/MovieList.js"></script>
-    <script type="text/javascript" src="../models/Auth.js"></script>
+	<script type="text/javascript" src="../models/Auth.js"></script>
+	<script type="text/javascript" src="../env.js"></script>
 	<script type="text/javascript" src="../views/home.js"></script>
 
-
 </head>
-<body>	
-		<div class="container">
-			<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
-			<div id="searchBar">
-					<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
-					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
+<body>
+
+<div class="container">
+	<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
+	<div id="searchBar">
+		<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
+		<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
+	</div>	
+
+	<div id="buttons">
+
+		<button id="openerAdd">Add Movie</button>
+			<div id="addMovieContainer">
+				<input type=text placeholder="Title" name="titleCreate">
+				<input type=text placeholder="Year" name="yearCreate">
+				<input type=text placeholder="Type" name="typeCreate">
+				<input type=text placeholder="Genre" name="genreCreate">
+				<input type=text placeholder="Image URL" name="posterCreate">
+				<button type="submit" name="addMovie">Add Movie</button>
 			</div>
 
-			<div id="buttons">
-
-				<button id="openerAdd">Add Movie</button>
-					<div id="addMovieContainer">
-						<input type=text placeholder="Title" name="titleCreate">
-						<input type=text placeholder="Year" name="yearCreate">
-						<input type=text placeholder="Type" name="typeCreate">
-						<input type=text placeholder="Genre" name="genreCreate">
-						<input type=text placeholder="Image URL" name="posterCreate">
-						<button type="submit" name="addMovie">Add Movie</button>
-					</div>
-
-				<button id="opener">Log in</button>
-				  	<div id="login" title="Basic dialog">			  	
-					    <label for="uname"><b>Username</b></label>
-					    <input type="text" placeholder="Enter Username" name="uname" required>
-					    <label for="psw"><b>Password</b></label>
-					    <input type="password" placeholder="Enter Password" name="psw" required>
-					    <button type="submit" name="login">Login</button>
-					    <button id="logout-button">Log Out </button>	
-			  		</div>	
-			  		  	
-			  	<button id="openerReg">Register now</button>
-				  	<div id="register">
-						<p>Create account</p>
-						<label for="username"><b>Username</b></label>
-						<input type="text" name="username" value="" placeholder="Enter Username" required>
-						<label for="psw"><b>Password</b></label>
-						<input type="password" placeholder="Enter Password" name="pswR" required>
-						<button type="submit" id="signupbtn">Sign Up</button>	
-				  	</div>
-
+		<button id="opener">Log in</button>
+			<div id="login" title="Basic dialog">			  	
+				<label for="uname"><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="uname" required>
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="psw" required>
+				<button type="submit" name="login">Login</button>
+				<button id="logout-button">Log Out </button>	
+			</div>	
+				
+		<button id="openerReg">Register now</button>
+			<div id="register">
+				<p>Create account</p>
+				<label for="username"><b>Username</b></label>
+				<input type="text" name="username" value="" placeholder="Enter Username" required>
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="pswR" required>
+				<button type="submit" id="signupbtn">Sign Up</button>	
 			</div>
+
 		</div>
+<<<<<<< HEAD
 	<div>
 	<div id="movieListContainer"></div>
+=======
+		<div class="container">
+			 <div id="movieListContainer" >
+
+			 </div>
+	  </div>
+>>>>>>> faaa9043f1674403c07427c22fc0eea8d4bf7115
 	</div>
+	
 	<footer>
-		<p>© 2018 - Fiii Ploii bestDevelopmentTeam | All rights reserved.</p>
+		<!-- <p>© 2018 - Fiii Ploii bestDevelopmentTeam | All rights reserved.</p>
 		<p>Contact information: <a href="mailto:someone@example.com">
-		fiiiPloii@siit.com</a>.</p>
+		fiiiPloii@siit.com</a>.</p> -->
+		<div class="flex-container" id="pagination">
+			<div><a href="#" id="first" class="active">1</a></div>
+			<div><a href="#" id="second">2</a></div>
+			<div><a href="#" id="thirde">3</a></div>
+		</div>
 	</footer>
 </body>
 </html>
