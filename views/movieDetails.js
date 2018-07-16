@@ -15,6 +15,10 @@ window.onload=function(){
 			const postDetailsContainer=document.getElementById('movieDetailsContainer');
 			//creating the elements for display
 
+			const divCont=document.createElement('div');
+			divCont.setAttribute('id', 'divCont');
+
+
 			const breakPoint=document.createElement('hr');
 			breakPoint.setAttribute('id', 'divider');
 
@@ -23,7 +27,7 @@ window.onload=function(){
 
 			const postPoster=document.createElement('img');
 			postPoster.setAttribute('src',currentMovie.Poster);
-			postPoster.classList.add('img-size');
+			postPoster.classList.add('imgMovie');
 
 			const postPlot=document.createElement('p');
 			postPlot.innerHTML= "<span>Plot</span>:" + "&nbsp;" + currentMovie.Plot;
@@ -84,16 +88,17 @@ window.onload=function(){
 
 			
 			//attaching the created elements for display
-			postDetailsContainer.appendChild(postTitle);
-			postDetailsContainer.appendChild(postPoster);
-			postDetailsContainer.appendChild(postPlot);
-			postDetailsContainer.appendChild(postType);
-			postDetailsContainer.appendChild(postActors);
-			postDetailsContainer.appendChild(postAwards);
-			postDetailsContainer.appendChild(postBoxOffice);
-			postDetailsContainer.appendChild(postYear);
-			postDetailsContainer.appendChild(postRuntime);
-			postDetailsContainer.appendChild(postDVD);
+			postDetailsContainer.appendChild(divCont);
+			divCont.appendChild(postTitle);
+			divCont.appendChild(postPoster);
+			divCont.appendChild(postPlot);
+			divCont.appendChild(postType);
+			divCont.appendChild(postActors);
+			divCont.appendChild(postAwards);
+			divCont.appendChild(postBoxOffice);
+			divCont.appendChild(postYear);
+			divCont.appendChild(postRuntime);
+			divCont.appendChild(postDVD);
 			postDetailsContainer.appendChild(breakPoint);
 			postDetailsContainer.appendChild(postCountry);
 			postDetailsContainer.appendChild(postProduction);
