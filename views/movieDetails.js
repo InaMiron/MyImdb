@@ -116,15 +116,7 @@ window.onload=function(){
 			postRatings.innerHTML=postRates;
 			postDetailsContainer.appendChild(postRatings);
 				
-		}
-
-		function errorMsg(xhr){
-			console.log('Something happened:',xhr);
-
-		}
-		postRatings.innerHTML=postRates;
-		postDetailsContainer.appendChild(postRatings);
-			
+		}		
 	}
 
 	function errorMsg(xhr){
