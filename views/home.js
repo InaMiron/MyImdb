@@ -36,8 +36,8 @@ function Onloaded(){
 				const item=viewData.itemList[i];
 				//console.log(item);
 				const boxMovie = document.createElement("div");
-				boxMovie.setAttribute('href',"");
-				const title = document.createElement("h3");
+				// boxMovie.setAttribute('href',"");
+				// const title = document.createElement("h3");
 				const anchor = document.createElement("a");
 				const picture=document.createElement('img');
 				const genre=document.createElement('p');
@@ -50,25 +50,30 @@ function Onloaded(){
 				boxMovie.setAttribute('class','movieBox');
 				picture.setAttribute('src',item.Poster);
 				picture.setAttribute('alt','404');
-				picture.setAttribute('width','200px');
+				picture.setAttribute('width','50px');
 				button.setAttribute('data-id',item._id);
 				anchor.setAttribute('href',basepath+'pages/movieDetails.html?movieId='+item._id);
 				picture.classList.add('img-size');
 				button.classList.add('remove');
 
-				title.innerHTML=item.Title+'<br>';
+				// title.innerHTML=item.Title;
 				genre.innerHTML=item.Genre;
 				type.innerHTML=item.Type;
 				year.innerHTML=item.Year;
 				button.innerText="Delete";
 
-				anchor.appendChild(picture);
+				boxMovie.innerHTML = '<a><img  src="'+item.Poster + '" class="img-size" width="150px" height="150px" ></a>';
+				boxMovie.innerHTML = '<h3>"' + item.Title + '"</h3>';
+
+				// anchor.appendChild(picture);
 				boxMovie.appendChild(anchor);
-				boxMovie.appendChild(title);
+				// boxMovie.appendChild(title);
 				boxMovie.appendChild(genre);
 				boxMovie.appendChild(type);
 				boxMovie.appendChild(year);
 				boxMovie.appendChild(button);
+
+				
 
 				containElements.appendChild(boxMovie);	
 			}
