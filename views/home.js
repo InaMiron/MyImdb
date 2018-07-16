@@ -52,7 +52,7 @@ function Onloaded(){
 				picture.setAttribute('alt','404');
 				picture.setAttribute('width','200px');
 				button.setAttribute('data-id',item._id);
-				anchor.setAttribute('href',+item._id);
+				anchor.setAttribute('href',basepath+'pages/movieDetails.html?movieId='+item._id);
 				picture.classList.add('img-size');
 				button.classList.add('remove');
 
