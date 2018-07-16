@@ -25,7 +25,7 @@ class User {
 			method:"GET",
 			headers:{'X-Auth-Token':localStorage.getItem('loginToken')},
 			success:(response)=>{
-				console.log("Logout message is : ",response);
+				alert(response.message);
 			},
 			error:(xhr)=>{
 				const parsedMessage = JSON.parse(xhr.responseText);

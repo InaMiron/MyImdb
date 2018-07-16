@@ -1,8 +1,7 @@
 window.onload=Onloaded;
 
-
-
 function Onloaded(){
+	happenAtLogedIn ();
 	
 	//logOut
 	const logoutUser=new User();
@@ -16,6 +15,7 @@ function Onloaded(){
 	
 	function logoutUsers(){
 		localStorage.clear();
+		happenAtLogedIn();
 	}
 
 	function logoutError(xhr){
@@ -46,7 +46,7 @@ function Onloaded(){
 				const button=document.createElement('button');
 
 
-				boxMovie.setAttribute('target','blank');
+				boxMovie.setAttribute('target','_blank');
 				boxMovie.setAttribute('class','movieBox');
 				picture.setAttribute('src',item.Poster);
 				picture.setAttribute('alt','404');
@@ -91,7 +91,6 @@ function Onloaded(){
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
 			event.preventDefault();
-			
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
 			const password = document.querySelector("[name='psw']").value;
@@ -102,13 +101,11 @@ function Onloaded(){
 			const currentUserLogin = new User(); 
 			//console.log(currentUserLogin);
 			currentUserLogin.sendLoginData(dataUser).then((response) => {
-				console.log(response);
+				//console.log(response);
 				let accessToken = response.accessToken;
-				console.log("RESPONSE TOKEN = ",accessToken);
 				localStorage.setItem('loginToken', accessToken);
-				console.log("LOCAL STORAGE TOKEN = ",localStorage.loginToken);
-			})
-		//la logare sa apara butoanele de edit, delete, create.(daca nu e tokenul in locale storage sa fie butoanele hide)
+				happenAtLogedIn();
+			});
 		})
 
 
@@ -252,3 +249,15 @@ $( "#openerAdd" ).on( "click", function() {
     });
 }); 
 
+function happenAtLogedIn () {
+	const tokenForLogIn = localStorage.getItem('loginToken');
+	if (tokenForLogIn) {
+		document.getElementById("logout-button").classList.remove("invisible");
+		document.getElementById("openerAdd").classList.remove("invisible");
+		document.getElementById("editContainer").classList.remove("invisible");
+	} else {
+		document.getElementById("logout-button").classList.add("invisible");
+		document.getElementById("openerAdd").classList.add("invisible");
+		document.getElementById("editContainer").classList.add("invisible");
+	};
+}

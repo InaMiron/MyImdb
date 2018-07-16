@@ -1,19 +1,64 @@
 
-body {
-	
+#movieDetailsContainer {
+
+  width:80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background:rgba(240, 240, 240, 0.6);
+  border-radius: 25px;
+  border: 1.5px solid grey;
+  margin: 30px auto;
+  line-height: 1.2;
 }
+
+#imdbicon {
+    width:10%;
+    height: 10%;
+}
+
+
+.imgMovie {
+	float: left;
+	max-width: 100%;
+	height: auto;
+	height: 268px;
+	width: 182px;
+	padding: 6px;
+	border-radius: 15px;
+}
+
+#buttons {
+    padding: 2%;
+}
+
+footer {
+    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4%;
+    color: white;
+    text-align: center;
+    color: black;
+    font-style: normal;
+}
+
+body {
+    background: url("https://cdn.pixabay.com/photo/2016/09/16/00/15/white-1673016_960_720.jpg") no-repeat center fixed;
+    background-size: cover;
+	padding-bottom: 22px;
+}   
 
 
 
 h3 {
-	display:flex;
-	justify-content:center;
+	text-align: center;
 	margin: 0px;
 	padding: 10px;
 	background-color: #808080;
 	border-radius: 20px 22px 1px 1px;
 	color: #fff;
 }
+
 
 a {
 	padding: 5px;
@@ -31,23 +76,6 @@ span {
 }
 
 
-#movieDetailsContainer {
-  width:80%;
-  background:rgba(240, 240, 240, 0.6);
-  border-radius: 25px;
-  border: 1.5px solid grey;
-  margin: 0 auto;
-  line-height: 1.2;
-}
-.img-size {
-	float: left;
-	max-width: 100%;
-	height: auto;
-	height: 268px;
-	width: 182px;
-	padding: 6px;
-	border-radius: 15px;
-}
 
 @media (max-width: 1373px) {
 	h3 {
@@ -55,6 +83,10 @@ span {
 	}
 }
 		
+#divider { 
+  width: 60%;
+  margin: 5px 0 5px 0;
+ } 
 		
 
 /*@media (max-width: 1156px) {
@@ -65,10 +97,6 @@ span {
 	
 	
 
-#divider { 
-  width: 60%;
-  margin: 5px 0 5px 0;
- } 
 
 
 	/*border:         none;

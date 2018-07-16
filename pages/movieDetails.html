@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="../css/style.css">
+   <!--  <link rel="stylesheet" href="../css/style.css"> -->
     <link rel="stylesheet" href="../css/MovieDetails.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
@@ -23,47 +23,56 @@
 <body>	
 		<div class="container">
 			<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
-			<div id="buttons" class="float-right">
 
-				<button id="openerAdd">Add Movie</button>
-					<div id="addMovieContainer">
-						<input type=text placeholder="Title" name="titleCreate">
-						<input type=text placeholder="Year" name="yearCreate">
-						<input type=text placeholder="Type" name="typeCreate">
-						<input type=text placeholder="Image URL" name="posterCreate">
-						<button type="submit" name="addMovie">Add Movie</button>
-					</div>
-					
+			<div id="buttons" class="pull-left btn-group">
+				<button id="openerReg">Register now</button>
+				<div id="register">
+					<p>Create account</p>
+					<label for="username"><b>Username</b></label>
+					<input type="text" name="username" value="" placeholder="Enter Username" required>
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="pswR" required>
+					<button type="submit" id="signupbtn">Sign Up</button>	
+				</div>
+
 				<button id="opener">Log in</button>
-				  	<div id="login" title="Basic dialog">			  	
-					    <label for="uname"><b>Username</b></label>
-					    <input type="text" placeholder="Enter Username" name="uname" required>
-					    <label for="psw"><b>Password</b></label>
-					    <input type="password" placeholder="Enter Password" name="psw" required>
-					    <button type="submit" name="login">Login</button>
-					    <button id="logout-button">Log Out </button>	
-			  		</div>	
-			  		  	
-			  	<button id="openerReg">Register now</button>
-				  	<div id="register">
-						<label for="username"><b>Username</b></label>
-						<input type="text" name="username" value="" placeholder="Enter Username" required>
-					    <label for="psw"><b>Password</b></label>
-					    <input type="password" placeholder="Enter Password" name="pswR" required>
-				      	<button type="submit" id="signupbtn">Sign Up</button>
-				  	</div>
+				<div id="login">			  	
+					<label for="uname"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" name="uname" required>
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw" required>
+					<button type="submit" name="login">Login</button>	
+				</div>	
+				<button id="logout-button" class="invisible">Log Out </button>
+
+				<button id="openerAdd" class="invisible">Add Movie</button>
+				<div id="addMovieContainer">
+					<input type=text placeholder="Title" name="titleCreate">
+					<input type=text placeholder="Year" name="yearCreate">
+					<input type=text placeholder="Type" name="typeCreate">
+					<input type=text placeholder="Genre" name="genreCreate">
+					<input type=text placeholder="Image URL" name="posterCreate">
+					<button type="submit" name="addMovie">Add Movie</button>
+				</div>
 
 			</div>
-			
+			<div class="invisible" id="editContainer">
+				 <button id="edit-button"> Edit </button>
+		  		 <button id="save-changes"> Save </button>
+		  		 <input type="text" placeholder="Movie Name" name="movieName">
+		  		 <input type="year" placeholder="Movie Year" name="movieYear">
+		  		 <input type="text" placeholder="Movie Type" name="movieType"> 
+		  		 <input type="text" placeholder="Movie Genre" name="movieGenre">
+		  		 <input type="text" placeholder="Movie Poster" name="moviePoster">
+	  		</div>
 		</div>
+		<div id="movieDetailsContainer">
 
-		<div id="movieDetailsContainer"></div>
+		</div>
 
 
 	<footer>
 		<p>© 2018 - Fiii Ploii bestDevelopmentTeam | All rights reserved.</p>
-		<p>Contact information: <a href="mailto:someone@example.com">
-		fiiiPloii@siit.com</a>.</p>
 	</footer>
 </body>
 </html>

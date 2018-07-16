@@ -109,5 +109,28 @@ class MovieDetails extends Movie{
       }
     })
   }
+
+
+      editMovie(id,data) {
+
+          return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies/' + id,{
+             method: "PUT",
+             headers: {
+             'X-Auth-Token' : localStorage.getItem('loginToken')
+            },
+            data: data,
+            success: () => {
+              window.location.reload(true);
+
+            },
+            error: (xhr) => {
+              console.log(xhr);
+
+            }
+
+          });
+      }
+
 }
+
     
