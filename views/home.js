@@ -3,6 +3,8 @@ window.onload=Onloaded;
 
 
 function Onloaded(){
+	
+	//logOut
 	const logoutUser=new User();
 	const logoutButton=document.getElementById('logout-button');
 	logoutButton.addEventListener('click',(e)=>{
@@ -22,78 +24,74 @@ function Onloaded(){
 
 
 	const viewData=new Movies();
-	viewData.getMovies()
+	viewData.getMovies(0)
 	.then(createMovieList)
 	.catch(CreateMovieListError);
-
+	const containElements=document.getElementById("movieListContainer");
 
 
 	function createMovieList(){
 		console.log(viewData.itemList);
-		const containElements=document.getElementById("movieListContainer");
-		
 			for(let i=0;i<viewData.itemList.length;i++){
-
 				const item=viewData.itemList[i];
 				//console.log(item);
-
-				const title=document.createElement("a");
-
-				title.setAttribute('href','file:///Users/mariacorseu/Desktop/fiiireloaded-master%20Nouu/pages/movieDetails.html?movieId='+item._id);
-
-				title.setAttribute('target','blank');
-				title.innerHTML=item.Title+'<br>';
-
+				const boxMovie = document.createElement("div");
+				boxMovie.setAttribute('href',"");
+				const title = document.createElement("h3");
+				const anchor = document.createElement("a");
 				const picture=document.createElement('img');
+				const genre=document.createElement('p');
+				const type=document.createElement('p');
+				const year=document.createElement('p');
+				const button=document.createElement('button');
+
+
+				boxMovie.setAttribute('target','blank');
+				boxMovie.setAttribute('class','movieBox');
 				picture.setAttribute('src',item.Poster);
 				picture.setAttribute('alt','404');
 				picture.setAttribute('width','200px');
-				picture.classList.add('img-size');
-
-				const genre=document.createElement('p');
-				genre.innerHTML=item.Genre;
-
-				const type=document.createElement('p');
-				type.innerHTML=item.Type;
-
-				const year=document.createElement('p');
-				year.innerHTML=item.Year;
-
-				const button=document.createElement('button');
 				button.setAttribute('data-id',item._id);
+				anchor.setAttribute('href',basepath+'pages/movieDetails.html?movieId='+item._id);
+				picture.classList.add('img-size');
 				button.classList.add('remove');
+
+				title.innerHTML=item.Title+'<br>';
+				genre.innerHTML=item.Genre;
+				type.innerHTML=item.Type;
+				year.innerHTML=item.Year;
 				button.innerText="Delete";
 
-				containElements.appendChild(picture);
-				containElements.appendChild(title);
-				containElements.appendChild(genre);
-				containElements.appendChild(type);
-				containElements.appendChild(year);
-				containElements.appendChild(button);
+				anchor.appendChild(picture);
+				boxMovie.appendChild(anchor);
+				boxMovie.appendChild(title);
+				boxMovie.appendChild(genre);
+				boxMovie.appendChild(type);
+				boxMovie.appendChild(year);
+				boxMovie.appendChild(button);
 
-
-				
-				
+				containElements.appendChild(boxMovie);	
 			}
-			//delete function should be outside the for cycle
-			$("#movieListContainer").delegate('.remove','click',function (){
-					const id=this.getAttribute('data-id');
-					//console.log(id);
-					const deleteMovie=new Movie();
-					deleteMovie.deleteMovie(id)
-					.then(function(){
-						console.log('success');
-					})
-					.catch(function(xhr){
-						console.log('Error!:',xhr);
-					});
+		//delete function should be outside the for cycle
+		$("#movieListContainer").delegate('.remove','click',function (){
+				const id=this.getAttribute('data-id');
+				//console.log(id);
+				const deleteMovie=new Movie();
+				deleteMovie.deleteMovie(id)
+				.then(function(){
+					console.log('success');
+				})
+				.catch(function(xhr){
+					console.log('Error!:',xhr);
 				});
+			});
 		}
 		//Log In functionality
 		//Submit button
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
 			event.preventDefault();
+			
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
 			const password = document.querySelector("[name='psw']").value;
@@ -152,12 +150,49 @@ function Onloaded(){
 			const userRegister = new User();
 			userRegister.registerData(dataRegister);
 		})
+		//search button
+		const searchBtn = document.getElementById("navbar-submit-button");
+		searchBtn.addEventListener("click",(event) => {
+			event.preventDefault();
+			containElements.innerHTML = '';
+			const searchText = document.getElementById('searchBarInput').value;
+			//console.log("text search", searchText);
+			viewData.searchData(searchText).then(createMovieList);
+		})
+
+		// pagination functions
+		document.getElementById("first").addEventListener("click", (e) => {
+			document.getElementById("thirde").classList.remove("active");
+			document.getElementById("second").classList.remove("active");
+			document.getElementById("first").classList.add("active");
+			event.preventDefault();
+			containElements.innerHTML = '';
+			viewData.getMovies(0).then(createMovieList);
+		});
+		
+		document.getElementById("second").addEventListener("click", (e) => {
+			document.getElementById("first").classList.remove("active");
+			document.getElementById("thirde").classList.remove("active");
+			document.getElementById("second").classList.add("active");
+			event.preventDefault();
+		    containElements.innerHTML = '';
+			viewData.getMovies(10).then(createMovieList);
+		});	
+
+		document.getElementById("thirde").addEventListener("click", (e) => {
+			document.getElementById("first").classList.remove("active");
+			document.getElementById("second").classList.remove("active");
+			document.getElementById("thirde").classList.add("active");
+			event.preventDefault();
+			containElements.innerHTML = '';
+			viewData.getMovies(20).then(createMovieList);
+		});	
 	}
+	
 
 	function CreateMovieListError(xhr){
 		console.log("error",xhr);
 	}
-
 
 let token = localStorage.getItem("loginToken");
 // console.log("global token = ", token);
@@ -215,4 +250,5 @@ $( "#openerReg" ).on( "click", function() {
 $( "#openerAdd" ).on( "click", function() {
       $( "#addMovieContainer" ).dialog( "open" );
     });
-});  
+}); 
+

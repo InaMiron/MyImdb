@@ -22,7 +22,7 @@ class Movie {
  addMovie(data) {
     return $.ajax(dapiUrl, {
       headers: {
-        'X-Auth-Token' : token
+        'X-Auth-Token' : localStorage.getItem('loginToken'),
       },
       method:"POST",
       data: data,
@@ -110,6 +110,7 @@ class MovieDetails extends Movie{
     })
   }
 
+
       editMovie(id,data) {
 
           return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies/' + id,{
@@ -131,4 +132,5 @@ class MovieDetails extends Movie{
       }
 
 }
+
     

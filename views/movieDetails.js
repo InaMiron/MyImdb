@@ -9,100 +9,105 @@ window.onload=function(){
 		.then(createDetails)
 		.catch(errorMsg);
 
+		function createDetails(){
+			console.log(currentMovie);
+			//getting the container element
+			const postDetailsContainer=document.getElementById('movieDetailsContainer');
+			//creating the elements for display
 
-	function createDetails(){
-		console.log(currentMovie);
-		//getting the container element
-		const postDetailsContainer=document.getElementById('movieDetailsContainer');
-		//creating the elements for display
-		const postTitle=document.createElement('h3');
-		postTitle.innerHTML=currentMovie.Title;
+			const breakPoint=document.createElement('hr');
+			breakPoint.setAttribute('id', 'divider');
 
-		const postPoster=document.createElement('img');
-		postPoster.setAttribute('src',currentMovie.Poster);
-		postPoster.classList.add('img-size');
+			const postTitle=document.createElement('h3');
+			postTitle.innerHTML=currentMovie.Title;
 
-		const postPlot=document.createElement('p');
-		postPlot.innerHTML= "Plot: " + currentMovie.Plot;
-		
-		const postActors=document.createElement('p');
-		postActors.innerHTML= "Actors: " + currentMovie.Actors;
-		
-		const postAwards=document.createElement('p');
-		postAwards.innerHTML= "Awards: " + currentMovie.Awards;
+			const postPoster=document.createElement('img');
+			postPoster.setAttribute('src',currentMovie.Poster);
+			postPoster.classList.add('img-size');
 
-		const postRuntime=document.createElement('p');
-		postRuntime.innerHTML= "Runtime: " + currentMovie.Runtime;
+			const postPlot=document.createElement('p');
+			postPlot.innerHTML= "<span>Plot</span>:" + "&nbsp;" + currentMovie.Plot;
+			
+			const postActors=document.createElement('p');
+			postActors.innerHTML= "<span>Actors</span>:  " + "&nbsp;" + currentMovie.Actors;
+			
+			const postAwards=document.createElement('p');
+			postAwards.innerHTML= "<span>Awards</span>:  " + "&nbsp;" + currentMovie.Awards;
 
-		const postCountry=document.createElement('p');
-		postCountry.innerHTML= "Country: " + currentMovie.Country;
+			const postRuntime=document.createElement('p');
+			postRuntime.innerHTML= "<span>Runtime</span>: " + "&nbsp;" + currentMovie.Runtime;
 
-		const postProduction=document.createElement('p');
-		postProduction.innerHTML= "Production: " + currentMovie.Production;
+			const postCountry=document.createElement('p');
+			postCountry.innerHTML= "<span>Country</span>: " + "&nbsp;" + currentMovie.Country;
 
-		const postGenre=document.createElement('p');
-		postGenre.innerHTML= "Genre: " + currentMovie.Genre;
+			const postProduction=document.createElement('p');
+			postProduction.innerHTML= "<span>Production</span>: " + "&nbsp;" + currentMovie.Production;
 
-		const postLanguage=document.createElement('p');
-		postLanguage.innerHTML= "Language: " + currentMovie.Language;
+			const postGenre=document.createElement('p');
+			postGenre.innerHTML= "<span>Genre</span>: " + "&nbsp;" + currentMovie.Genre;
 
-		const postMetascore=document.createElement('p');
-		postMetascore.innerHTML= "Metascore: " + currentMovie.Metascore;
+			const postLanguage=document.createElement('p');
+			postLanguage.innerHTML= "<span>Language</span>: " + "&nbsp;" + currentMovie.Language;
 
-		const postRated=document.createElement('p');
-		postRated.innerHTML= "Rate: " + currentMovie.Rated;
+			const postMetascore=document.createElement('p');
+			postMetascore.innerHTML= "<span>Metascore</span>: " + "&nbsp;" + currentMovie.Metascore;
 
-		const postReleased=document.createElement('p');
-		postReleased.innerHTML= "Release Date: " + currentMovie.Released;
+			const postRated=document.createElement('p');
+			postRated.innerHTML= "<span>Rate</span>: " + "&nbsp;" + currentMovie.Rated;
 
-		const postType=document.createElement('p');
-		postType.innerHTML= "Genre: " + currentMovie.Type;
+			const postReleased=document.createElement('p');
+			postReleased.innerHTML= "<span>Release Date</span>: " + "&nbsp;" + currentMovie.Released;
 
-		const postYear=document.createElement('p');
-		postYear.innerHTML= "Release Date: " + currentMovie.Year;
+			const postType=document.createElement('p');
+			postType.innerHTML= "<span>Genre</span>: " + "&nbsp;" + currentMovie.Type;
 
-		const postBoxOffice=document.createElement('p');
-		postBoxOffice.innerHTML= "BoxOffice: " + currentMovie.BoxOffice;
+			const postYear=document.createElement('p');
+			postYear.innerHTML= "<span>Release Date</span>: " + "&nbsp;" + currentMovie.Year;
 
-		const postDVD=document.createElement('p');
-		postDVD.innerHTML= "Dvd: " + currentMovie.DVD;
+			const postBoxOffice=document.createElement('p');
+			postBoxOffice.innerHTML= "<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
 
-		const postimdbRating=document.createElement('p');
-		postimdbRating.innerHTML= "Imdb Rating: " + currentMovie.imdbRating;
+			const postDVD=document.createElement('p');
+			postDVD.innerHTML= "<span>Dvd</span>: " + "&nbsp;" + currentMovie.DVD;
 
-		const postimdbVotes=document.createElement('p');
-		postimdbVotes.innerHTML= "Imdb Votes: " + currentMovie.imdbVotes;
+			const postimdbRating=document.createElement('p');
+			postimdbRating.innerHTML= "<span>Imdb Rating</span>: " + "&nbsp;" + currentMovie.imdbRating;
 
-		const postWebsite=document.createElement('a');
-		postWebsite.setAttribute('href',currentMovie.Website);
-		postWebsite.setAttribute('target','blank');
-		postWebsite.innerHTML=currentMovie.Website+'<br>';
+			const postimdbVotes=document.createElement('p');
+			postimdbVotes.innerHTML= "<span>Imdb Votes</span>: " + "&nbsp;" + currentMovie.imdbVotes;
+
+			const postWebsite=document.createElement('a');
+			postWebsite.setAttribute('href',currentMovie.Website);
+			postWebsite.setAttribute('target','blank');
+			postWebsite.innerHTML="<span>Movie website</span>:</a> " + "&nbsp;" + currentMovie.Website+'<br>';
 
 
-		
-		//attaching the created elements for display
-		postDetailsContainer.appendChild(postTitle);
-		postDetailsContainer.appendChild(postPoster);
-		postDetailsContainer.appendChild(postPlot);
-		postDetailsContainer.appendChild(postType);
-		postDetailsContainer.appendChild(postActors);
-		postDetailsContainer.appendChild(postAwards);
-		postDetailsContainer.appendChild(postBoxOffice);
-		postDetailsContainer.appendChild(postYear);
-		postDetailsContainer.appendChild(postRuntime);
-		postDetailsContainer.appendChild(postDVD);
-		postDetailsContainer.appendChild(postCountry);
-		postDetailsContainer.appendChild(postProduction);
-		postDetailsContainer.appendChild(postGenre);
-		postDetailsContainer.appendChild(postLanguage);
-		postDetailsContainer.appendChild(postMetascore);
-		postDetailsContainer.appendChild(postRated);
-		postDetailsContainer.appendChild(postReleased);
-		postDetailsContainer.appendChild(postimdbRating);
-		postDetailsContainer.appendChild(postimdbVotes);
-		postDetailsContainer.appendChild(postWebsite);
+			
+			//attaching the created elements for display
+			postDetailsContainer.appendChild(postTitle);
+			postDetailsContainer.appendChild(postPoster);
+			postDetailsContainer.appendChild(postPlot);
+			postDetailsContainer.appendChild(postType);
+			postDetailsContainer.appendChild(postActors);
+			postDetailsContainer.appendChild(postAwards);
+			postDetailsContainer.appendChild(postBoxOffice);
+			postDetailsContainer.appendChild(postYear);
+			postDetailsContainer.appendChild(postRuntime);
+			postDetailsContainer.appendChild(postDVD);
+			postDetailsContainer.appendChild(breakPoint);
+			postDetailsContainer.appendChild(postCountry);
+			postDetailsContainer.appendChild(postProduction);
+			postDetailsContainer.appendChild(postGenre);
+			postDetailsContainer.appendChild(postLanguage);
+			postDetailsContainer.appendChild(postMetascore);
+			postDetailsContainer.appendChild(postRated);
+			postDetailsContainer.appendChild(postReleased);
+			postDetailsContainer.appendChild(postimdbRating);
+			postDetailsContainer.appendChild(postimdbVotes);
+			postDetailsContainer.appendChild(postWebsite);
 
-		// EDIT 
+
+			//EDIT 
 
 			const editButton = document.getElementById("edit-button"); 
 			editButton.addEventListener("click", (e) => {
@@ -145,16 +150,17 @@ window.onload=function(){
 			});
 
 
-		//complex code for aan array to display the objects from within
-		let postRates="";
-		const postRatings=document.createElement('div');
-		for(let i=0;i<currentMovie.Ratings.length;i++){
-		postRates += "<ul>"+"<li>"+currentMovie.Ratings[i].Source+":"+
-			currentMovie.Ratings[i].Value+"</li>"+"</ul>";
-		}
-		postRatings.innerHTML=postRates;
-		postDetailsContainer.appendChild(postRatings);
-			
+			//complex code for aan array to display the objects from within
+			let postRates="";
+			const postRatings=document.createElement('div');
+			for(let i=0;i<currentMovie.Ratings.length;i++){
+			postRates += "<ul>"+"<li>"+currentMovie.Ratings[i].Source+":"+
+				currentMovie.Ratings[i].Value+"</li>"+"</ul>";
+			}
+			postRatings.innerHTML=postRates;
+			postDetailsContainer.appendChild(postRatings);
+				
+		}		
 	}
 
 	function errorMsg(xhr){
@@ -169,4 +175,3 @@ window.onload=function(){
 	const results = regex.exec(location.search);
 	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 	};
-}
