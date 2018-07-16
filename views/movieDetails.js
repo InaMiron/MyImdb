@@ -178,6 +178,7 @@ window.onload=function(){
 		
 			function logoutUsers(){
 				localStorage.clear();
+				happenAtLogedIn();
 			}
 
 			function logoutError(xhr){
@@ -202,9 +203,8 @@ window.onload=function(){
 				currentUserLogin.sendLoginData(dataUser).then((response) => {
 					console.log(response);
 					let accessToken = response.accessToken;
-					console.log("RESPONSE TOKEN = ",accessToken);
 					localStorage.setItem('loginToken', accessToken);
-					console.log("LOCAL STORAGE TOKEN = ",localStorage.loginToken);
+					happenAtLogedIn();
 				});
 			})
 
