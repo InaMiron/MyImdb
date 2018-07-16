@@ -46,7 +46,7 @@ function Onloaded(){
 				const button=document.createElement('button');
 
 
-				boxMovie.setAttribute('target','blank');
+				boxMovie.setAttribute('target','_blank');
 				boxMovie.setAttribute('class','movieBox');
 				picture.setAttribute('src',item.Poster);
 				picture.setAttribute('alt','404');

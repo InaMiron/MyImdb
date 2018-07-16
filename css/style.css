@@ -4,10 +4,6 @@ body {
     padding-bottom: 22px;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-}
 
 #imdbicon {
     width:10%;
@@ -30,9 +26,6 @@ body {
 .img-size{
 	width:22%;
     height:auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding-top: 10px;
 }
 
@@ -45,6 +38,8 @@ body {
     margin: 10px;
     padding: 10px;
 }
+
+
 
 
 footer {
@@ -61,10 +56,6 @@ footer {
 }
 
 /* pagination */
-.flex-container {
-    display: flex;
-    justify-content: center;
-  }
 #pagination a {
     color: black;
     float: left;
