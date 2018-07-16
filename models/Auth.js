@@ -9,7 +9,7 @@ class User {
 			method:"POST",
 			data: data,
 			success:(response) => {
-				//console.log(response);
+				alert('User logged in.');
 			},
 			error:(xhr) => {
 				const parsedMessage = JSON.parse(xhr.responseText);
