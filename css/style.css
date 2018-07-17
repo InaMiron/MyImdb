@@ -4,9 +4,6 @@ body {
     padding-bottom: 22px;
 }
 
-.container {
-    margin: auto;
-}
 
 #imdbicon {
     width:10%;
@@ -27,9 +24,8 @@ body {
 }
 
 .img-size{
-    /* width:50px; */
-    /* height:auto; */
-    justify-content: space-between;
+    width:22%;
+    height:auto;
     padding-top: 10px;
 }
 
@@ -41,19 +37,13 @@ body {
     display: inline-block;
     margin: 10px;
     padding: 10px;
-    max-width: 250px; 
-    min-height: 390px;
+    max-width: 250px;
 }
-.movieBox a {
-    display: inline-block;
-    width: 90px;
-    height: 90px;
-    z-index: 99999;
-}
+
+
 
 
 footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -65,10 +55,6 @@ footer {
 }
 
 /* pagination */
-.flex-container {
-    display: flex;
-    justify-content: center;
-  }
 #pagination a {
     color: black;
     float: left;
