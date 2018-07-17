@@ -9,7 +9,8 @@ class User {
 			method:"POST",
 			data: data,
 			success:(response) => {
-				alert('User logged in.');
+				console.log(data);
+				alert('Welcome, ' + data.username + " !");
 			},
 			error:(xhr) => {
 				const parsedMessage = JSON.parse(xhr.responseText);

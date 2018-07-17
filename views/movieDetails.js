@@ -205,6 +205,7 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
+					$("#opener").hide();
 				});
 			})
 

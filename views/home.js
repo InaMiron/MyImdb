@@ -105,6 +105,7 @@ function Onloaded(){
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
 				happenAtLogedIn();
+				$("#opener").hide();
 			});
 		})
 
