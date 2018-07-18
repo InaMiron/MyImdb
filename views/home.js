@@ -16,6 +16,7 @@ function Onloaded(){
 	function logoutUsers(){
 		localStorage.clear();
 		happenAtLogedIn();
+		$("#opener").show();
 	}
 
 	function logoutError(xhr){
