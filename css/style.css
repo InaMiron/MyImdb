@@ -5,6 +5,7 @@ body {
 }
 
 .center-contain{
+    width:100%;
     display:flex;
     justify-content:center;
 }
