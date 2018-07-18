@@ -7,7 +7,6 @@ function Onloaded(){
 	const logoutUser=new User();
 	const logoutButton=document.getElementById('logout-button');
 	logoutButton.addEventListener('click',(e)=>{
-		e.preventDefault();
 		logoutUser.SendLogoutData()
 		.then(logoutUsers)
 		.catch(logoutError);
@@ -52,6 +51,7 @@ function Onloaded(){
 			}
 		//delete function should be outside the for cycle
 		$("#movieListContainer").delegate('.remove','click',function (){
+			if(localStorage.getItem('loginToken')) {
 				const id=this.getAttribute('data-id');
 				//console.log(id);
 				const deleteMovie=new Movie();
@@ -62,8 +62,11 @@ function Onloaded(){
 				.catch(function(xhr){
 					console.log('Error!:',xhr);
 				});
+				} else {
+				alert("You need to login to delete this movie!")
+				}
 			});
-		}
+		};
 		//Log In functionality
 		//Submit button
 		const loginButton = document.querySelector("[name='login']");
@@ -240,3 +243,4 @@ function happenAtLogedIn () {
 		document.getElementById("editContainer").classList.add("invisible");
 	};
 }
+
