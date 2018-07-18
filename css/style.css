@@ -4,6 +4,10 @@ body {
     padding-bottom: 22px;
 }
 
+.center-contain{
+    display:flex;
+    justify-content:center;
+}
 
 #imdbicon {
     width:10%;
