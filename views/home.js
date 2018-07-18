@@ -34,44 +34,13 @@ function Onloaded(){
 		console.log(viewData.itemList);
 			for(let i=0;i<viewData.itemList.length;i++){
 				const item=viewData.itemList[i];
-				//console.log(item);
 				const boxMovie = document.createElement("div");
 				boxMovie.setAttribute('href',"");
-				/*const title = document.createElement("h3");
-				const anchor = document.createElement("a");
-				const picture=document.createElement('img');
-				const genre=document.createElement('p');
-				const type=document.createElement('p');
-				const year=document.createElement('p');
-				const button=document.createElement('button');*/
-
 
 				boxMovie.setAttribute('target','blank');
 				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
-				/*picture.setAttribute('src',item.Poster);
-				picture.setAttribute('alt','404');
-				picture.setAttribute('width','200px');
-				button.setAttribute('data-id',item._id);
-				anchor.setAttribute('href',basepath+'pages/movieDetails.html?movieId='+item._id);
-				picture.classList.add('img-size');
-				button.classList.add('remove');
 
-				title.innerHTML=item.Title+'<br>';
-				genre.innerHTML=item.Genre;
-				type.innerHTML=item.Type;
-				year.innerHTML=item.Year;
-				button.innerText="Delete";
-
-				anchor.appendChild(picture);
-				boxMovie.appendChild(anchor);
-				boxMovie.appendChild(title);
-				boxMovie.appendChild(genre);
-				boxMovie.appendChild(type);
-				boxMovie.appendChild(year);
-				boxMovie.appendChild(button);
-
-				containElements.appendChild(boxMovie);	*/
-				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+">"+
+				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_blank'>"+
 				"<img src="+item.Poster+"alt='404' width='100px'>"+"</a>"+
 				"<h3>"+item.Title+"</h3>"+
 				"<p>"+item.Genre+"</p>"+
