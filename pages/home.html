@@ -24,56 +24,68 @@
 <body>
 
 <div class="container">
-	<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
-	<div id="searchBar">
-		<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
-		<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
-	</div>	
+			<div class="row">
+				<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
 
-	<div id="buttons">
-
-		<button id="openerAdd">Add Movie</button>
-			<div id="addMovieContainer">
-				<input type=text placeholder="Title" name="titleCreate">
-				<input type=text placeholder="Year" name="yearCreate">
-				<input type=text placeholder="Type" name="typeCreate">
-				<input type=text placeholder="Genre" name="genreCreate">
-				<input type=text placeholder="Image URL" name="posterCreate">
-				<button type="submit" name="addMovie">Add Movie</button>
+				<div id="searchBar" class="btn-group col-xs-12 col-sm-12 col-md-6">
+					<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
+					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
+					<label>Search movie by:</label>
+             <select id = "myList">
+               <option id="titleSearch" value = "Title=">Title</option>
+               <option id="genreSearch" value = "Genre=">Genre</option>
+               <option id="yearSearch" value = "Year=">Year</option>
+             </select>
+				</div>
 			</div>
+			 
+			<div class="row"> 
+				<div id="buttons" class="btn-group col-xs-12 col-sm-12 col-md-6">
+					<button id="openerReg">Register now</button>
+					<div id="register">
+						<p>Create account</p>
+						<label for="username"><b>Username</b></label>
+						<input type="text" name="username" value="" placeholder="Enter Username" required>
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Enter Password" name="pswR" required>
+						<button type="submit" id="signupbtn">Sign Up</button>	
+					</div>
 
-		<button id="opener">Log in</button>
-			<div id="login" title="Basic dialog">			  	
-				<label for="uname"><b>Username</b></label>
-				<input type="text" placeholder="Enter Username" name="uname" required>
-				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="psw" required>
-				<button type="submit" name="login">Login</button>
-				<button id="logout-button">Log Out </button>	
-			</div>	
-				
-		<button id="openerReg">Register now</button>
-			<div id="register" title="Create account">
-				<label for="username"><b>Username</b></label>
-				<input type="text" name="username" value="" placeholder="Enter Username" required>
-				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="pswR" required>
-				<button type="submit" id="signupbtn">Sign Up</button>	
+					<button id="opener">Log in</button>
+					<div id="login">			  	
+						<label for="uname"><b>Username</b></label>
+						<input type="text" placeholder="Enter Username" name="uname" required>
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Enter Password" name="psw" required>
+						<button type="submit" name="login">Login</button>	
+					</div>	
+					<button id="logout-button" class="invisible">Log Out </button>
+
+					<button id="openerAdd" class="invisible">Add Movie</button>
+					<div id="addMovieContainer">
+						<input type=text placeholder="Title" name="titleCreate">
+						<input type=text placeholder="Year" name="yearCreate">
+						<input type=text placeholder="Type" name="typeCreate">
+						<input type=text placeholder="Genre" name="genreCreate">
+						<input type=text placeholder="Image URL" name="posterCreate">
+						<button type="submit" name="addMovie">Add Movie</button>
+					</div>
+				</div>
 			</div>
-
+		
+			
 		</div>
 
 		<div class="container">
-			 <div id="movieListContainer" >
+			 <div id="movieListContainer" class="row">
 
 			 </div>
 	  </div>
+	  <div class="invisible" id="editContainer">
+	  </div>
 	
 	<footer>
-	<!-- 	<p>© 2018 - Fiii Ploii bestDevelopmentTeam | All rights reserved.</p>
-		<p>Contact information: <a href="mailto:someone@example.com">
-		fiiiPloii@siit.com</a>.</p> -->
-		<div class="flex-container" id="pagination">
+		<div class="d-flex justify-content-center" id="pagination">
 			<div><a href="#" id="first" class="active">1</a></div>
 			<div><a href="#" id="second">2</a></div>
 			<div><a href="#" id="thirde">3</a></div>
@@ -81,7 +93,6 @@
 	</footer>
 </body>
 </html>
-
 
 
 

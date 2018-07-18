@@ -4,9 +4,6 @@ body {
     padding-bottom: 22px;
 }
 
-.container {
-    margin: auto;
-}
 
 #imdbicon {
     width:10%;
@@ -19,7 +16,7 @@ body {
 }
 
 #searchBarInput {
-    width: 90%;
+    width: 70%;
 }
 
 #buttons {
@@ -29,9 +26,6 @@ body {
 .img-size{
     width:22%;
     height:auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding-top: 10px;
 }
 
@@ -42,13 +36,14 @@ body {
     border: solid 3px black;
     display: inline-block;
     margin: 10px;
-    padding: 10px;
-    max-width: 250px;
+    padding: 5px;
+    max-width: 45%;
 }
 
 
+
+
 footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -60,10 +55,6 @@ footer {
 }
 
 /* pagination */
-.flex-container {
-    display: flex;
-    justify-content: center;
-  }
 #pagination a {
     color: black;
     float: left;

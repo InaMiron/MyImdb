@@ -1,8 +1,7 @@
 window.onload=Onloaded;
 
-
-
 function Onloaded(){
+	happenAtLogedIn ();
 	
 	//logOut
 	const logoutUser=new User();
@@ -16,6 +15,8 @@ function Onloaded(){
 	
 	function logoutUsers(){
 		localStorage.clear();
+		happenAtLogedIn();
+		$("#opener").show();
 	}
 
 	function logoutError(xhr){
@@ -34,43 +35,20 @@ function Onloaded(){
 		console.log(viewData.itemList);
 			for(let i=0;i<viewData.itemList.length;i++){
 				const item=viewData.itemList[i];
-				//console.log(item);
 				const boxMovie = document.createElement("div");
 				boxMovie.setAttribute('href',"");
-				const title = document.createElement("h3");
-				const anchor = document.createElement("a");
-				const picture=document.createElement('img');
-				const genre=document.createElement('p');
-				const type=document.createElement('p');
-				const year=document.createElement('p');
-				const button=document.createElement('button');
-
 
 				boxMovie.setAttribute('target','blank');
-				boxMovie.setAttribute('class','movieBox');
-				picture.setAttribute('src',item.Poster);
-				picture.setAttribute('alt','404');
-				picture.setAttribute('width','200px');
-				button.setAttribute('data-id',item._id);
-				anchor.setAttribute('href',basepath+'pages/movieDetails.html?movieId='+item._id);
-				picture.classList.add('img-size');
-				button.classList.add('remove');
+				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
 
-				title.innerHTML=item.Title+'<br>';
-				genre.innerHTML=item.Genre;
-				type.innerHTML=item.Type;
-				year.innerHTML=item.Year;
-				button.innerText="Delete";
-
-				anchor.appendChild(picture);
-				boxMovie.appendChild(anchor);
-				boxMovie.appendChild(title);
-				boxMovie.appendChild(genre);
-				boxMovie.appendChild(type);
-				boxMovie.appendChild(year);
-				boxMovie.appendChild(button);
-
-				containElements.appendChild(boxMovie);	
+				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_blank'>"+
+				"<img src="+item.Poster+"alt='404' width='100px'>"+"</a>"+
+				"<h3>"+item.Title+"</h3>"+
+				"<p>"+item.Genre+"</p>"+
+				"<p>"+item.Type+"</p>"+
+				"<p>"+item.Year+"</p>"+
+				"<button data-id="+item._id+" class='remove'>Delete</button>";
+				containElements.appendChild(boxMovie);
 			}
 		//delete function should be outside the for cycle
 		$("#movieListContainer").delegate('.remove','click',function (){
@@ -91,7 +69,6 @@ function Onloaded(){
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
 			event.preventDefault();
-			
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
 			const password = document.querySelector("[name='psw']").value;
@@ -102,13 +79,12 @@ function Onloaded(){
 			const currentUserLogin = new User(); 
 			//console.log(currentUserLogin);
 			currentUserLogin.sendLoginData(dataUser).then((response) => {
-				console.log(response);
+				//console.log(response);
 				let accessToken = response.accessToken;
-				console.log("RESPONSE TOKEN = ",accessToken);
 				localStorage.setItem('loginToken', accessToken);
-				console.log("LOCAL STORAGE TOKEN = ",localStorage.loginToken);
-			})
-		//la logare sa apara butoanele de edit, delete, create.(daca nu e tokenul in locale storage sa fie butoanele hide)
+				happenAtLogedIn();
+				$("#opener").hide();
+			});
 		})
 
 
@@ -252,3 +228,15 @@ $( "#openerAdd" ).on( "click", function() {
     });
 }); 
 
+function happenAtLogedIn () {
+	const tokenForLogIn = localStorage.getItem('loginToken');
+	if (tokenForLogIn) {
+		document.getElementById("logout-button").classList.remove("invisible");
+		document.getElementById("openerAdd").classList.remove("invisible");
+		document.getElementById("editContainer").classList.remove("invisible");
+	} else {
+		document.getElementById("logout-button").classList.add("invisible");
+		document.getElementById("openerAdd").classList.add("invisible");
+		document.getElementById("editContainer").classList.add("invisible");
+	};
+}

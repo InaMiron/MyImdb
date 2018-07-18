@@ -1,4 +1,5 @@
 window.onload=function(){
+	happenAtLogedIn ()
 	//declaring a new object for the movie details
 	const currentMovie=new MovieDetails();
 	//using an id parameter from code below
@@ -111,6 +112,50 @@ window.onload=function(){
 			postDetailsContainer.appendChild(postimdbVotes);
 			postDetailsContainer.appendChild(postWebsite);
 
+
+			//EDIT 
+
+			const editButton = document.getElementById("edit-button"); 
+			editButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				const title=document.querySelector("input[name='movieName']");
+				const year=document.querySelector("input[name='movieYear']");
+				const type=document.querySelector("input[name='movieType']");
+				const genre=document.querySelector("input[name='movieGenre']");
+				const poster=document.querySelector("input[name='moviePoster']");
+				title.value = currentMovie.Title;
+				year.value = currentMovie.Year;
+				type.value = currentMovie.Type;
+				genre.value = currentMovie.Genre;
+				poster.value = currentMovie.Poster;
+
+			});
+
+			const saveButton = document.getElementById("save-changes");
+			saveButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				const id=getUrlParameter("movieId");
+				console.log(id);
+				const title=document.querySelector("input[name='movieName']");
+				const year=document.querySelector("input[name='movieYear']");
+				const type=document.querySelector("input[name='movieType']");
+				const genre=document.querySelector("input[name='movieGenre']");
+				const poster=document.querySelector("input[name='moviePoster']");
+
+				const data={
+					Title:title.value,
+					Year:year.value,
+					Type:type.value,
+					Genre:genre.value,
+					Poster:poster.value
+				};
+				console.log(data);
+
+				const updateMovie = new MovieDetails();
+				updateMovie.editMovie(id,data); 
+			});
+
+
 			//complex code for aan array to display the objects from within
 			let postRates="";
 			const postRatings=document.createElement('div');
@@ -120,7 +165,89 @@ window.onload=function(){
 			}
 			postRatings.innerHTML=postRates;
 			postDetailsContainer.appendChild(postRatings);
+
+			//logOut
+			const logoutUser=new User();
+			const logoutButton=document.getElementById('logout-button');
+			logoutButton.addEventListener('click',(e)=>{
+				e.preventDefault();
+				logoutUser.SendLogoutData()
+				.then(logoutUsers)
+				.catch(logoutError);
+			});
+		
+			function logoutUsers(){
+				localStorage.clear();
+				happenAtLogedIn();
+				$("#opener").show();
+			}
+
+			function logoutError(xhr){
+			console.log("error",xhr);
+			};
+
+			//Log In functionality
+			//Submit button
+			const loginButton = document.querySelector("[name='login']");
+			loginButton.addEventListener("click", (event) => {
+				event.preventDefault();
 				
+				console.log(event.target);
+				const userName = document.querySelector("[name='uname']").value;
+				const password = document.querySelector("[name='psw']").value;
+				const dataUser = {
+					username:userName,
+					password:password,
+				};
+				const currentUserLogin = new User(); 
+				//console.log(currentUserLogin);
+				currentUserLogin.sendLoginData(dataUser).then((response) => {
+					console.log(response);
+					let accessToken = response.accessToken;
+					localStorage.setItem('loginToken', accessToken);
+					happenAtLogedIn();
+					$("#opener").hide();
+				});
+			})
+
+			//Add Movie 
+			const addMovieButton = document.querySelector("[name='addMovie']");
+			//console.log(addMovieButton);
+			addMovieButton.addEventListener("click", (event) => {
+				//console.log(event.target);
+				const title = document.querySelector("[name='titleCreate']").value;
+				const year = document.querySelector("[name='yearCreate']").value;
+				const type = document.querySelector("[name='typeCreate']").value;
+				const genre = document.querySelector("[name='genreCreate']").value;
+				const imageUrl = document.querySelector("[name='posterCreate']").value;
+
+
+				const movieAddData = {
+					Title:title,
+					Year:year,
+					Genre:genre,
+					Type:type,
+					Poster:imageUrl,
+				}
+
+				const movieAdded = new Movie();
+				movieAdded.addMovie(movieAddData);
+			})
+			
+			//register new user
+			const registerBtn = document.getElementById('signupbtn');
+			//console.log(registerBtn);
+			registerBtn.addEventListener("click", (event) => {
+				event.preventDefault();
+				const usernameRegister = document.querySelector('[name="username"]').value;	
+				const passwordRegister = document.querySelector('[name="pswR"]').value;
+				const dataRegister = {
+					username:usernameRegister,
+					password:passwordRegister,
+				};
+				const userRegister = new User();
+				userRegister.registerData(dataRegister);
+			})			
 		}		
 	}
 
