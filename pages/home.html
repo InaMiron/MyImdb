@@ -24,45 +24,49 @@
 <body>
 
 <div class="container">
-			<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
+			<div class="row">
+				<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
 
-			<div id="searchBar" class="pull-left btn-group">
-				<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
-				<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
+				<div id="searchBar" class="btn-group col-xs-12 col-sm-12 col-md-6">
+					<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
+					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
+				</div>
 			</div>
 			 
-			<div id="buttons" class="pull-left btn-group">
-				<button id="openerReg">Register now</button>
-				<div id="register">
-					<p>Create account</p>
-					<label for="username"><b>Username</b></label>
-					<input type="text" name="username" value="" placeholder="Enter Username" required>
-					<label for="psw"><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="pswR" required>
-					<button type="submit" id="signupbtn">Sign Up</button>	
+			<div class="row"> 
+				<div id="buttons" class="btn-group col-xs-12 col-sm-12 col-md-6">
+					<button id="openerReg">Register now</button>
+					<div id="register">
+						<p>Create account</p>
+						<label for="username"><b>Username</b></label>
+						<input type="text" name="username" value="" placeholder="Enter Username" required>
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Enter Password" name="pswR" required>
+						<button type="submit" id="signupbtn">Sign Up</button>	
+					</div>
+
+					<button id="opener">Log in</button>
+					<div id="login">			  	
+						<label for="uname"><b>Username</b></label>
+						<input type="text" placeholder="Enter Username" name="uname" required>
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Enter Password" name="psw" required>
+						<button type="submit" name="login">Login</button>	
+					</div>	
+					<button id="logout-button" class="invisible">Log Out </button>
+
+					<button id="openerAdd" class="invisible">Add Movie</button>
+					<div id="addMovieContainer">
+						<input type=text placeholder="Title" name="titleCreate">
+						<input type=text placeholder="Year" name="yearCreate">
+						<input type=text placeholder="Type" name="typeCreate">
+						<input type=text placeholder="Genre" name="genreCreate">
+						<input type=text placeholder="Image URL" name="posterCreate">
+						<button type="submit" name="addMovie">Add Movie</button>
+					</div>
 				</div>
-
-				<button id="opener">Log in</button>
-				<div id="login">			  	
-					<label for="uname"><b>Username</b></label>
-					<input type="text" placeholder="Enter Username" name="uname" required>
-					<label for="psw"><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="psw" required>
-					<button type="submit" name="login">Login</button>	
-				</div>	
-				<button id="logout-button" class="invisible">Log Out </button>
-
-				<button id="openerAdd" class="invisible">Add Movie</button>
-				<div id="addMovieContainer">
-					<input type=text placeholder="Title" name="titleCreate">
-					<input type=text placeholder="Year" name="yearCreate">
-					<input type=text placeholder="Type" name="typeCreate">
-					<input type=text placeholder="Genre" name="genreCreate">
-					<input type=text placeholder="Image URL" name="posterCreate">
-					<button type="submit" name="addMovie">Add Movie</button>
-				</div>
-
 			</div>
+		
 			
 		</div>
 
