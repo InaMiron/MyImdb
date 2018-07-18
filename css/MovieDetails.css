@@ -6,8 +6,13 @@
   background:rgba(240, 240, 240, 0.6);
   border-radius: 25px;
   border: 1.5px solid grey;
-  margin: 30px auto;
+  margin: 10px auto;
   line-height: 1.2;
+}
+
+#divCont {
+	padding-bottom: 5px;
+	border-bottom: 1.5px solid grey;
 }
 
 #imdbicon {
@@ -20,7 +25,6 @@
 	float: left;
 	max-width: 100%;
 	height: auto;
-	height: 268px;
 	width: 182px;
 	padding: 6px;
 	border-radius: 15px;
@@ -44,7 +48,9 @@ footer {
 }
 
 body {
-	padding-bottom: 22px;
+	background: url("https://cdn.pixabay.com/photo/2016/09/16/00/15/white-1673016_960_720.jpg") no-repeat center fixed;
+    background-size: cover;
+    padding-bottom: 22px;
 }
 
 
@@ -63,6 +69,7 @@ a {
 }
 
 p {
+	font-family: Verdana, Arial, sans-serif;
 	padding: 5px;
 	margin-bottom: 0px;
 	margin-right: 0px;
@@ -71,6 +78,7 @@ p {
 }
 
 span {
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 
