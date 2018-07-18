@@ -132,5 +132,3 @@ class MovieDetails extends Movie{
       }
 
 }
-
-    
