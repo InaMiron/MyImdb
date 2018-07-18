@@ -37,18 +37,18 @@ function Onloaded(){
 				//console.log(item);
 				const boxMovie = document.createElement("div");
 				boxMovie.setAttribute('href',"");
-				const title = document.createElement("h3");
+				/*const title = document.createElement("h3");
 				const anchor = document.createElement("a");
 				const picture=document.createElement('img');
 				const genre=document.createElement('p');
 				const type=document.createElement('p');
 				const year=document.createElement('p');
-				const button=document.createElement('button');
+				const button=document.createElement('button');*/
 
 
-				boxMovie.setAttribute('target','_blank');
-				boxMovie.setAttribute('class','movieBox');
-				picture.setAttribute('src',item.Poster);
+				boxMovie.setAttribute('target','blank');
+				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
+				/*picture.setAttribute('src',item.Poster);
 				picture.setAttribute('alt','404');
 				picture.setAttribute('width','200px');
 				button.setAttribute('data-id',item._id);
@@ -70,7 +70,15 @@ function Onloaded(){
 				boxMovie.appendChild(year);
 				boxMovie.appendChild(button);
 
-				containElements.appendChild(boxMovie);	
+				containElements.appendChild(boxMovie);	*/
+				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+">"+
+				"<img src="+item.Poster+"alt='404' width='100px'>"+"</a>"+
+				"<h3>"+item.Title+"</h3>"+
+				"<p>"+item.Genre+"</p>"+
+				"<p>"+item.Type+"</p>"+
+				"<p>"+item.Year+"</p>"+
+				"<button data-id="+item._id+" class='remove'>Delete</button>";
+				containElements.appendChild(boxMovie);
 			}
 		//delete function should be outside the for cycle
 		$("#movieListContainer").delegate('.remove','click',function (){
