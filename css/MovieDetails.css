@@ -12,21 +12,29 @@
 
 #divCont {
 	overflow:hidden;
+	padding-top:0;
 	padding-bottom: 5px;
 	border-bottom: 1.5px solid grey;
 }
 
 #divContTwo {
-	
+	/*overflow:hidden;*/
+	margin-left:0px;
 	border-right: 1.5px solid grey;
 	float:left;
-	width:500px;
+	width:50%;
+}
+
+#divContThree {
+	/*overflow:hidden;*/
+	width:50%;
+	float:right;
+
 }
 
 #postRatings {
 	
-	display:flex;
-	justify-content: flex-end;
+
 }
 
 #imdbicon {
@@ -68,10 +76,10 @@ body {
 
 h3 {
 	text-align: center;
-	margin: 0px;
+	margin: 0;
 	padding: 10px;
 	background-color: #808080;
-	border-radius: 20px 22px 1px 1px;
+	border-radius: 20.5px 22.5px 1.5px 1.5px;
 	color: #fff;
 }
 
@@ -81,7 +89,6 @@ a {
 }
 
 p {
-	font-family: Verdana, Arial, sans-serif;
 	padding: 5px;
 	margin-bottom: 0px;
 	margin-right: 0px;
@@ -90,16 +97,16 @@ p {
 }
 
 span {
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	
 }
 
 
-
+/*
 @media (max-width: 1373px) {
 	h3 {
 	   border-radius: 19px 21px 2px 2px;
 	}
-}
+}*/
 		
 #divider { 
   width: 60%;
