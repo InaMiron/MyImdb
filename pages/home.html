@@ -23,23 +23,24 @@
 </head>
 <body>
 
-<div class="container">
-			<div class="row">
+<div class="container sticky">
+			<div class="center-contain">
 				<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
-
-				<div id="searchBar" class="btn-group col-xs-12 col-sm-12 col-md-6">
+				<div id="searchBar" class="btn-group">
 					<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
 					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
 					<label>Search movie by:</label>
              <select id = "myList">
-               <option id="titleSearch" value = "Title=">Title</option>
+               <option id="titleSearch" selected="selected" value = "Title=">Title</option>
                <option id="genreSearch" value = "Genre=">Genre</option>
                <option id="yearSearch" value = "Year=">Year</option>
              </select>
 				</div>
 			</div>
-			<div class="row"> 
-				<div id="buttons" class="btn-group col-xs-12 col-sm-12 col-md-6">
+
+			 
+			<div class="center-contain"> 
+				<div id="buttons" class="cbtn-group">
 					<button id="openerReg">Register now</button>
 					<div id="register">
 						<p>Create account</p>
