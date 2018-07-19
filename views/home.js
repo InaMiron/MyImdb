@@ -40,13 +40,13 @@ function Onloaded(){
 				boxMovie.setAttribute('target','blank');
 				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
 
-				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_blank'>"+
-				"<img src="+item.Poster+"alt='404' width='100px'>"+"</a>"+
+				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_blank' class='movieImg'>"+
+				"<img src="+item.Poster+"alt='404' width='200px'>"+"</a>"+
 				"<h3>"+item.Title+"</h3>"+
 				"<p>"+item.Genre+"</p>"+
 				"<p>"+item.Type+"</p>"+
 				"<p>"+item.Year+"</p>"+
-				"<button data-id="+item._id+" class='remove'>Delete</button>";
+				"<button data-id="+item._id+" class='remove btn btn-danger'>Delete</button>";
 				containElements.appendChild(boxMovie);
 			}
 		//delete function should be outside the for cycle
