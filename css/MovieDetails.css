@@ -1,18 +1,32 @@
 
 #movieDetailsContainer {
-
+  overflow:hidden;
   width:80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background:rgba(240, 240, 240, 0.6);
   border-radius: 25px;
   border: 1.5px solid grey;
   margin: 10px auto;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 #divCont {
+	overflow:hidden;
 	padding-bottom: 5px;
 	border-bottom: 1.5px solid grey;
+}
+
+#divContTwo {
+	
+	border-right: 1.5px solid grey;
+	float:left;
+	width:500px;
+}
+
+#postRatings {
+	
+	display:flex;
+	justify-content: flex-end;
 }
 
 #imdbicon {
