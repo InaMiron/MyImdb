@@ -7,18 +7,22 @@ body {
 
 .center-contain{
     width:100%;
-    display:flex;
-    justify-content:center;
+    text-align:center;
 }
 
 #imdbicon {
-    width:10%;
-    height: 10%;
+    width:75px;
+    height: 55px;
 }
 
 #searchBar {
     padding: 2%;
     width: 60%;
+    height:70px;
+}
+
+#searchBar span{
+    margin:0 2.5px;
 }
 
 #searchBarInput {
