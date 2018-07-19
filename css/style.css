@@ -7,7 +7,10 @@ body {
 
 .center-contain{
     width:100%;
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 }
 
 #imdbicon {
@@ -17,20 +20,24 @@ body {
 
 #searchBar {
     padding: 2%;
-    width: 60%;
+    width: 80%;
     height:70px;
 }
 
-#searchBar span{
+#searchBar span{S
     margin:0 2.5px;
 }
 
 #searchBarInput {
-    width: 70%;
+    width: 45%;
 }
 
 #buttons {
     padding: 2%;
+}
+
+.hidden{
+    display:none;
 }
 
 .img-size{
@@ -88,8 +95,7 @@ footer {
 }
 
 #pagination a.active {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #e6c422;
 }
 
 #pagination a:hover:not(.active) {background-color: #ddd;}

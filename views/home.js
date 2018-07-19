@@ -234,13 +234,11 @@ $( "#openerAdd" ).on( "click", function() {
 function happenAtLogedIn () {
 	const tokenForLogIn = localStorage.getItem('loginToken');
 	if (tokenForLogIn) {
-		document.getElementById("logout-button").classList.remove("invisible");
-		document.getElementById("openerAdd").classList.remove("invisible");
-		document.getElementById("editContainer").classList.remove("invisible");
+		document.getElementById("logout-button").classList.remove("hidden");
+		document.getElementById("openerAdd").classList.remove("hidden");
 	} else {
-		document.getElementById("logout-button").classList.add("invisible");
-		document.getElementById("openerAdd").classList.add("invisible");
-		document.getElementById("editContainer").classList.add("invisible");
+		document.getElementById("logout-button").classList.add("hidden");
+		document.getElementById("openerAdd").classList.add("hidden");
 	};
 }
 
