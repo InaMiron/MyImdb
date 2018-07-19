@@ -1,8 +1,8 @@
 window.onload=Onloaded;
 
 function Onloaded(){
-	happenAtLogedIn ();
-	
+
+	happenAtLogedIn ();	
 	//logOut
 	const logoutUser=new User();
 	const logoutButton=document.getElementById('logout-button');
@@ -35,12 +35,10 @@ function Onloaded(){
 			for(let i=0;i<viewData.itemList.length;i++){
 				const item=viewData.itemList[i];
 				const boxMovie = document.createElement("div");
-				boxMovie.setAttribute('href',"");
 
-				boxMovie.setAttribute('target','blank');
 				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
 
-				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_blank' class='movieImg'>"+
+				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_self' class='movieImg'>"+
 				"<img src="+item.Poster+"alt='404' width='200px'>"+"</a>"+
 				"<h3>"+item.Title+"</h3>"+
 				"<p>"+item.Genre+"</p>"+
@@ -71,6 +69,8 @@ function Onloaded(){
 		//Submit button
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
+			$("#opener").hide();
+			$("#login").dialog( "close" );
 			event.preventDefault();
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
@@ -82,11 +82,12 @@ function Onloaded(){
 			const currentUserLogin = new User(); 
 			//console.log(currentUserLogin);
 			currentUserLogin.sendLoginData(dataUser).then((response) => {
+
 				//console.log(response);
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
 				happenAtLogedIn();
-				$("#opener").hide();
+				
 			});
 		})
 
@@ -95,6 +96,7 @@ function Onloaded(){
 		const addMovieButton = document.querySelector("[name='addMovie']");
 		//console.log(addMovieButton);
 		addMovieButton.addEventListener("click", (event) => {
+			$("#addMovieContainer").dialog( "close" );
 			//console.log(event.target);
 			const title = document.querySelector("[name='titleCreate']").value;
 			const year = document.querySelector("[name='yearCreate']").value;
@@ -113,6 +115,7 @@ function Onloaded(){
 
 			const movieAdded = new Movie();
 			movieAdded.addMovie(movieAddData);
+			
 		})
 		
 		//register new user
@@ -120,6 +123,7 @@ function Onloaded(){
 		//console.log(registerBtn);
 		registerBtn.addEventListener("click", (event) => {
 			event.preventDefault();
+			$("#register").dialog("close");
 			const usernameRegister = document.querySelector('[name="username"]').value;	
 			const passwordRegister = document.querySelector('[name="pswR"]').value;
 			const dataRegister = {
@@ -128,6 +132,7 @@ function Onloaded(){
 			};
 			const userRegister = new User();
 			userRegister.registerData(dataRegister);
+			
 		})
 		//search button
 		const searchBtn = document.getElementById("navbar-submit-button");
@@ -185,13 +190,13 @@ let token = localStorage.getItem("loginToken");
       },
       hide: {
         effect: "explode",
-        duration: 1000
+        duration: 300
       }
 	});
  
 $( "#opener" ).on( "click", function() {
       $( "#login" ).dialog( "open" );
-	});
+      });
 
  $( function() {
     $( "#register" ).dialog({
@@ -202,7 +207,7 @@ $( "#opener" ).on( "click", function() {
       },
       hide: {
         effect: "explode",
-        duration: 1000
+        duration: 300
       }
     });
 });
@@ -221,7 +226,7 @@ $( "#openerReg" ).on( "click", function() {
       },
       hide: {
         effect: "explode",
-        duration: 1000
+        duration: 300
       }
 	});
 });

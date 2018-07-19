@@ -3,6 +3,7 @@ body {
     background-size: cover;
     padding-bottom: 22px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-bottom: 3%;
 }
 
 .center-contain{
@@ -11,6 +12,26 @@ body {
     justify-content:center;
     align-items:center;
 
+}
+#navbar-submit-button {
+    border: 0px;
+    background-color: #E6C422;
+}
+#searchBarInput {
+    border: 0px;
+}
+.movie-shadow, #myList {
+    border: 0px;
+    background-color: #E6C422;
+    border-radius: 4px;
+    margin: 0 0.5%;
+    box-shadow: 12px 10px 22px black;
+}
+.movie-shadow:hover {
+    box-shadow: 7px 6px 12px black;
+}
+.movie-shadow:active {
+    box-shadow: 2px 2px 8px black;
 }
 
 #imdbicon {
@@ -46,21 +67,30 @@ body {
     padding-top: 10px;
 }
 .movieImg {
-    max-width: 350px;
+    max-width: 300px;
     float: left;
     clear: right;
-    margin-right: 2%;
+    margin-right: 10px;
 }
 
 .movieDetailsContainer{
     overflow:auto;
+}
+footer {
+    
+    left: 0;
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    background-color: #E6C422;
+    position: fixed;
+    bottom: 0px; 
 }
 .movieBox{
     box-shadow: black 12px 10px 22px;
     display: inline-block;
     margin: 10px;
     max-width: 45%;
-    box-sizing: border-box;
 }
 .movieBox h3 {
     text-shadow: black 12px 10px 20px;
@@ -69,21 +99,13 @@ body {
     box-shadow: black 12px 10px 22px;
     border: 0px;
 }
-.remove :hoover {
-    box-shadow: black 9px 8px 12px;
+.remove:hover {
+    box-shadow: 7px 6px 12px black;
+}
+.remove:active {
+    box-shadow: 2px 2px 8px black;
 }
 
-
-footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4%;
-    color: white;
-    text-align: center;
-    color: black;
-    font-style: normal;
-}
 
 /* pagination */
 #pagination a {
@@ -99,3 +121,7 @@ footer {
 }
 
 #pagination a:hover:not(.active) {background-color: #ddd;}
+
+.hiddenBtn {
+    visibility: hidden;
+}
