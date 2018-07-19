@@ -3,6 +3,10 @@ window.onload=Onloaded;
 
 
 function Onloaded(){
+
+	if(localStorage.getItem('loginToken')) {
+		document.getElementById("logout-button").style.visibility = "visible";
+	}
 	
 	//logOut
 	const logoutUser=new User();
@@ -102,6 +106,7 @@ function Onloaded(){
 			const currentUserLogin = new User(); 
 			//console.log(currentUserLogin);
 			currentUserLogin.sendLoginData(dataUser).then((response) => {
+				$( "#login" ).dialog( "close" );
 				console.log(response);
 				let accessToken = response.accessToken;
 				console.log("RESPONSE TOKEN = ",accessToken);
@@ -141,6 +146,7 @@ function Onloaded(){
 		//console.log(registerBtn);
 		registerBtn.addEventListener("click", (event) => {
 			event.preventDefault();
+			$( "#register" ).dialog( "close" );
 			const usernameRegister = document.querySelector('[name="username"]').value;	
 			const passwordRegister = document.querySelector('[name="pswR"]').value;
 			const dataRegister = {
@@ -212,7 +218,7 @@ let token = localStorage.getItem("loginToken");
  
 $( "#opener" ).on( "click", function() {
       $( "#login" ).dialog( "open" );
-	});
+      });
 
  $( function() {
     $( "#register" ).dialog({

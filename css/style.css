@@ -78,3 +78,7 @@ footer {
 }
 
 #pagination a:hover:not(.active) {background-color: #ddd;}
+
+.hiddenBtn {
+    visibility: hidden;
+}
