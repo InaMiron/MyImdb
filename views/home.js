@@ -15,8 +15,6 @@ function Onloaded(){
 	function logoutUsers(){
 		localStorage.clear();
 		happenAtLogedIn();
-		$("#opener").show();
-		$("#openerReg").show();
 	}
 
 	function logoutError(xhr){
@@ -85,8 +83,6 @@ function Onloaded(){
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
 				happenAtLogedIn();	
-				$("#opener").hide();
-				$("#openerReg").hide();
 			}).catch(function(xhr){
 					console.log('Error!:',xhr);
 				});;
@@ -137,8 +133,6 @@ function Onloaded(){
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
 				happenAtLogedIn();	
-				$("#opener").hide();
-				$("#openerReg").hide();
 			}).catch(function(xhr){
 					console.log('Error!:',xhr);
 				});	
@@ -264,13 +258,11 @@ function happenAtLogedIn () {
 	if (tokenForLogIn) {
 		document.getElementById("logout-button").classList.remove("invisible");
 		document.getElementById("openerAdd").classList.remove("invisible");
-		document.getElementById("editContainer").classList.remove("invisible");
 		document.getElementById("opener").classList.add("invisible");
 		document.getElementById("openerReg").classList.add("invisible");
 	} else {
 		document.getElementById("logout-button").classList.add("invisible");
 		document.getElementById("openerAdd").classList.add("invisible");
-		document.getElementById("editContainer").classList.add("invisible");
 		document.getElementById("opener").classList.remove("invisible");
 		document.getElementById("openerReg").classList.remove("invisible");
 	};

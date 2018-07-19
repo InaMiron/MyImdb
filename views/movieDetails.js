@@ -1,5 +1,6 @@
 window.onload=function(){
 	happenAtLogedIn ()
+	logedInWithEdit ()
 	//declaring a new object for the movie details
 	const currentMovie=new MovieDetails();
 	//using an id parameter from code below
@@ -187,8 +188,7 @@ window.onload=function(){
 			function logoutUsers(){
 				localStorage.clear();
 				happenAtLogedIn();
-				$("#opener").show();
-				$("#openerReg").show();
+				document.getElementById("editContainer").classList.add("invisible");
 			}
 
 			function logoutError(xhr){
@@ -214,8 +214,7 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
-					$("#opener").hide();
-					$("#openerReg").hide();
+					logedInWithEdit ()
 				}).catch(function(xhr){
 					console.log('Error!:',xhr);
 					});
@@ -264,8 +263,7 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();	
-					$("#opener").hide();
-					$("#openerReg").hide();
+					logedInWithEdit ()
 				}).catch(function(xhr){
 					console.log('Error!:',xhr);
 				});
@@ -285,3 +283,12 @@ window.onload=function(){
 	const results = regex.exec(location.search);
 	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 	};
+
+	function logedInWithEdit () {
+	const tokenForLogIn = localStorage.getItem('loginToken');
+	if (tokenForLogIn) {
+		document.getElementById("editContainer").classList.remove("invisible");
+	} else {
+		document.getElementById("editContainer").classList.add("invisible");
+	};
+}
