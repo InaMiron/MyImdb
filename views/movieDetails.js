@@ -20,8 +20,8 @@ window.onload=function(){
 			divCont.setAttribute('id', 'divCont');
 
 
-			const breakPoint=document.createElement('hr');
-			breakPoint.setAttribute('id', 'divider');
+			// const breakPoint=document.createElement('hr');
+			// breakPoint.setAttribute('id', 'divider');
 
 			const postTitle=document.createElement('h3');
 			postTitle.innerHTML=currentMovie.Title;
@@ -100,8 +100,8 @@ window.onload=function(){
 			divCont.appendChild(postYear);
 			divCont.appendChild(postRuntime);
 			divCont.appendChild(postDVD);
-			postDetailsContainer.appendChild(breakPoint);
 			postDetailsContainer.appendChild(postCountry);
+			// postDetailsContainer.appendChild(breakPoint);
 			postDetailsContainer.appendChild(postProduction);
 			postDetailsContainer.appendChild(postGenre);
 			postDetailsContainer.appendChild(postLanguage);
