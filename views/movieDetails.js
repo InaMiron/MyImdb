@@ -22,6 +22,9 @@ window.onload=function(){
 			const divContTwo=document.createElement('div');
 			divContTwo.setAttribute('id', 'divContTwo');
 
+			const divContThree=document.createElement('div');
+			divContThree.setAttribute('id', 'divContThree');
+
 
 			// const breakPoint=document.createElement('hr');
 			// breakPoint.setAttribute('id', 'divider');
@@ -73,7 +76,7 @@ window.onload=function(){
 			postYear.innerHTML= "<span>Year</span>: " + "&nbsp;" + currentMovie.Year;
 
 			const postBoxOffice=document.createElement('p');
-			postBoxOffice.innerHTML= "<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
+			postBoxOffice.innerHTML= "&nbsp;" + "<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
 
 			const postDVD=document.createElement('p');
 			postDVD.innerHTML= "<span>Dvd</span>: " + "&nbsp;" + currentMovie.DVD;
@@ -94,6 +97,7 @@ window.onload=function(){
 			//attaching the created elements for display
 			postDetailsContainer.appendChild(divCont);
 			postDetailsContainer.appendChild(divContTwo);
+			postDetailsContainer.appendChild(divContThree);
 			divCont.appendChild(postTitle);
 			divCont.appendChild(postPoster);
 			divCont.appendChild(postPlot);
@@ -104,16 +108,16 @@ window.onload=function(){
 			divCont.appendChild(postLanguage);
 			divCont.appendChild(postCountry);
 			// postDetailsContainer.appendChild(breakPoint);
-			divContTwo.appendChild(postProduction);
-			divContTwo.appendChild(postType);
+			divContThree.appendChild(postProduction);
+			divContThree.appendChild(postType);
 			divContTwo.appendChild(postDVD);
 			divContTwo.appendChild(postMetascore);
-			postDetailsContainer.appendChild(postBoxOffice);
-			postDetailsContainer.appendChild(postAwards);
-			postDetailsContainer.appendChild(postRated);
-			postDetailsContainer.appendChild(postReleased);
-			postDetailsContainer.appendChild(postimdbRating);
-			postDetailsContainer.appendChild(postimdbVotes);
+			divContThree.appendChild(postBoxOffice);
+			divContThree.appendChild(postAwards);
+			divContThree.appendChild(postRated);
+			divContThree.appendChild(postReleased);
+			divContTwo.appendChild(postimdbRating);
+			divContTwo.appendChild(postimdbVotes);
 			divContTwo.appendChild(postWebsite);
 
 
@@ -169,7 +173,7 @@ window.onload=function(){
 				currentMovie.Ratings[i].Value+"</li>"+"</ul>";
 			}
 			postRatings.innerHTML=postRates;
-			postDetailsContainer.appendChild(postRatings);
+			divContTwo.appendChild(postRatings);
 
 			//logOut
 			const logoutUser=new User();
