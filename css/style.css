@@ -110,8 +110,11 @@ footer {
 }
 
 #pagination a.active {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #e6c422;
 }
 
 #pagination a:hover:not(.active) {background-color: #ddd;}
+
+.hiddenBtn {
+    visibility: hidden;
+}

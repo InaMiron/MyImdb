@@ -11,13 +11,16 @@ window.onload=function(){
 		.catch(errorMsg);
 
 		function createDetails(){
-			console.log(currentMovie);
+			// console.log(currentMovie);
 			//getting the container element
 			const postDetailsContainer=document.getElementById('movieDetailsContainer');
 			//creating the elements for display
 
 			const divCont=document.createElement('div');
 			divCont.setAttribute('id', 'divCont');
+
+			const divContTwo=document.createElement('div');
+			divContTwo.setAttribute('id', 'divContTwo');
 
 
 			// const breakPoint=document.createElement('hr');
@@ -64,10 +67,10 @@ window.onload=function(){
 			postReleased.innerHTML= "<span>Release Date</span>: " + "&nbsp;" + currentMovie.Released;
 
 			const postType=document.createElement('p');
-			postType.innerHTML= "<span>Genre</span>: " + "&nbsp;" + currentMovie.Type;
+			postType.innerHTML= "<span>Type</span>: " + "&nbsp;" + currentMovie.Type;
 
 			const postYear=document.createElement('p');
-			postYear.innerHTML= "<span>Release Date</span>: " + "&nbsp;" + currentMovie.Year;
+			postYear.innerHTML= "<span>Year</span>: " + "&nbsp;" + currentMovie.Year;
 
 			const postBoxOffice=document.createElement('p');
 			postBoxOffice.innerHTML= "<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
@@ -90,27 +93,28 @@ window.onload=function(){
 			
 			//attaching the created elements for display
 			postDetailsContainer.appendChild(divCont);
+			postDetailsContainer.appendChild(divContTwo);
 			divCont.appendChild(postTitle);
 			divCont.appendChild(postPoster);
 			divCont.appendChild(postPlot);
-			divCont.appendChild(postType);
-			divCont.appendChild(postActors);
-			divCont.appendChild(postAwards);
-			divCont.appendChild(postBoxOffice);
 			divCont.appendChild(postYear);
+			divCont.appendChild(postGenre);
+			divCont.appendChild(postActors);
 			divCont.appendChild(postRuntime);
-			divCont.appendChild(postDVD);
-			postDetailsContainer.appendChild(postCountry);
+			divCont.appendChild(postLanguage);
+			divCont.appendChild(postCountry);
 			// postDetailsContainer.appendChild(breakPoint);
-			postDetailsContainer.appendChild(postProduction);
-			postDetailsContainer.appendChild(postGenre);
-			postDetailsContainer.appendChild(postLanguage);
-			postDetailsContainer.appendChild(postMetascore);
+			divContTwo.appendChild(postProduction);
+			divContTwo.appendChild(postType);
+			divContTwo.appendChild(postDVD);
+			divContTwo.appendChild(postMetascore);
+			postDetailsContainer.appendChild(postBoxOffice);
+			postDetailsContainer.appendChild(postAwards);
 			postDetailsContainer.appendChild(postRated);
 			postDetailsContainer.appendChild(postReleased);
 			postDetailsContainer.appendChild(postimdbRating);
 			postDetailsContainer.appendChild(postimdbVotes);
-			postDetailsContainer.appendChild(postWebsite);
+			divContTwo.appendChild(postWebsite);
 
 
 			//EDIT 
@@ -159,6 +163,7 @@ window.onload=function(){
 			//complex code for aan array to display the objects from within
 			let postRates="";
 			const postRatings=document.createElement('div');
+			postRatings.setAttribute('id', 'postRatings');
 			for(let i=0;i<currentMovie.Ratings.length;i++){
 			postRates += "<ul>"+"<li>"+currentMovie.Ratings[i].Source+":"+
 				currentMovie.Ratings[i].Value+"</li>"+"</ul>";
@@ -207,6 +212,7 @@ window.onload=function(){
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
 					$("#opener").hide();
+					$("#login").dialog( "close" );
 				});
 			})
 
@@ -232,6 +238,7 @@ window.onload=function(){
 
 				const movieAdded = new Movie();
 				movieAdded.addMovie(movieAddData);
+				$("#addMovieContainer").dialog( "close" );
 			})
 			
 			//register new user
@@ -247,6 +254,7 @@ window.onload=function(){
 				};
 				const userRegister = new User();
 				userRegister.registerData(dataRegister);
+				$("#register").dialog( "close" );
 			})			
 		}		
 	}
