@@ -35,12 +35,10 @@ function Onloaded(){
 			for(let i=0;i<viewData.itemList.length;i++){
 				const item=viewData.itemList[i];
 				const boxMovie = document.createElement("div");
-				boxMovie.setAttribute('href',"");
 
-				boxMovie.setAttribute('target','blank');
 				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
 
-				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_blank' class='movieImg'>"+
+				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_self' class='movieImg'>"+
 				"<img src="+item.Poster+"alt='404' width='200px'>"+"</a>"+
 				"<h3>"+item.Title+"</h3>"+
 				"<p>"+item.Genre+"</p>"+
