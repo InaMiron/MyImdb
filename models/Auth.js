@@ -43,7 +43,6 @@ class User {
 			data:data,
 			success:(response) => {
 				console.log(response);
-				alert("Registration completed successfully");
 			},
 			error:(xhr) => {
 				const parsedMessage = JSON.parse(xhr.responseText);

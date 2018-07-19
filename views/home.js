@@ -16,6 +16,7 @@ function Onloaded(){
 		localStorage.clear();
 		happenAtLogedIn();
 		$("#opener").show();
+		$("#openerReg").show();
 	}
 
 	function logoutError(xhr){
@@ -69,9 +70,7 @@ function Onloaded(){
 		//Submit button
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
-			$("#opener").hide();
 			$("#login").dialog( "close" );
-			event.preventDefault();
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
 			const password = document.querySelector("[name='psw']").value;
@@ -82,13 +81,15 @@ function Onloaded(){
 			const currentUserLogin = new User(); 
 			//console.log(currentUserLogin);
 			currentUserLogin.sendLoginData(dataUser).then((response) => {
-
 				//console.log(response);
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
-				happenAtLogedIn();
-				
-			});
+				happenAtLogedIn();	
+				$("#opener").hide();
+				$("#openerReg").hide();
+			}).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});;
 		})
 
 
@@ -122,7 +123,6 @@ function Onloaded(){
 		const registerBtn = document.getElementById('signupbtn');
 		//console.log(registerBtn);
 		registerBtn.addEventListener("click", (event) => {
-			event.preventDefault();
 			$("#register").dialog("close");
 			const usernameRegister = document.querySelector('[name="username"]').value;	
 			const passwordRegister = document.querySelector('[name="pswR"]').value;
@@ -131,18 +131,35 @@ function Onloaded(){
 				password:passwordRegister,
 			};
 			const userRegister = new User();
-			userRegister.registerData(dataRegister);
-			
-		})
+			userRegister.registerData(dataRegister).then((response) => {
+				userRegister.sendLoginData(dataRegister)
+				//console.log(response);
+				let accessToken = response.accessToken;
+				localStorage.setItem('loginToken', accessToken);
+				happenAtLogedIn();	
+				$("#opener").hide();
+				$("#openerReg").hide();
+			}).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});	
+		});
 		//search button
 		const searchBtn = document.getElementById("navbar-submit-button");
 		searchBtn.addEventListener("click",(event) => {
 			event.preventDefault();
+			document.getElementById("first").classList.add("active");
+			document.getElementById("thirde").classList.remove("active");
+			document.getElementById("second").classList.remove("active");
 			containElements.innerHTML = '';
 			const searchText = document.getElementById('searchBarInput').value;
 			//console.log("text search", searchText);
-			viewData.searchData(searchText).then(createMovieList);
-		})
+			viewData.searchData(searchText).then(() => {
+				createMovieList();
+				document.getElementById("pagination").classList.add("invisible");
+			}).catch(function(xhr){
+					console.log('Error!:',xhr);
+			});
+		});
 
 		// pagination functions
 		document.getElementById("first").addEventListener("click", (e) => {
@@ -151,7 +168,9 @@ function Onloaded(){
 			document.getElementById("first").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
-			viewData.getMovies(0).then(createMovieList);
+			viewData.getMovies(0).then(createMovieList).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 		});
 		
 		document.getElementById("second").addEventListener("click", (e) => {
@@ -160,7 +179,9 @@ function Onloaded(){
 			document.getElementById("second").classList.add("active");
 			event.preventDefault();
 		    containElements.innerHTML = '';
-			viewData.getMovies(10).then(createMovieList);
+			viewData.getMovies(10).then(createMovieList).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 		});	
 
 		document.getElementById("thirde").addEventListener("click", (e) => {
@@ -169,7 +190,9 @@ function Onloaded(){
 			document.getElementById("thirde").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
-			viewData.getMovies(20).then(createMovieList);
+			viewData.getMovies(20).then(createMovieList).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 		});	
 	}
 	
@@ -242,10 +265,14 @@ function happenAtLogedIn () {
 		document.getElementById("logout-button").classList.remove("invisible");
 		document.getElementById("openerAdd").classList.remove("invisible");
 		document.getElementById("editContainer").classList.remove("invisible");
+		document.getElementById("opener").classList.add("invisible");
+		document.getElementById("openerReg").classList.add("invisible");
 	} else {
 		document.getElementById("logout-button").classList.add("invisible");
 		document.getElementById("openerAdd").classList.add("invisible");
 		document.getElementById("editContainer").classList.add("invisible");
+		document.getElementById("opener").classList.remove("invisible");
+		document.getElementById("openerReg").classList.remove("invisible");
 	};
 }
 

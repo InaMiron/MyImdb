@@ -175,7 +175,6 @@ window.onload=function(){
 			const logoutUser=new User();
 			const logoutButton=document.getElementById('logout-button');
 			logoutButton.addEventListener('click',(e)=>{
-				e.preventDefault();
 				logoutUser.SendLogoutData()
 				.then(logoutUsers)
 				.catch(logoutError);
@@ -185,6 +184,7 @@ window.onload=function(){
 				localStorage.clear();
 				happenAtLogedIn();
 				$("#opener").show();
+				$("#openerReg").show();
 			}
 
 			function logoutError(xhr){
@@ -195,8 +195,7 @@ window.onload=function(){
 			//Submit button
 			const loginButton = document.querySelector("[name='login']");
 			loginButton.addEventListener("click", (event) => {
-				event.preventDefault();
-				
+				$("#login").dialog( "close" );
 				console.log(event.target);
 				const userName = document.querySelector("[name='uname']").value;
 				const password = document.querySelector("[name='psw']").value;
@@ -212,14 +211,17 @@ window.onload=function(){
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
 					$("#opener").hide();
-					$("#login").dialog( "close" );
-				});
-			})
+					$("#openerReg").hide();
+				}).catch(function(xhr){
+					console.log('Error!:',xhr);
+					});
+			});
 
 			//Add Movie 
 			const addMovieButton = document.querySelector("[name='addMovie']");
 			//console.log(addMovieButton);
 			addMovieButton.addEventListener("click", (event) => {
+				$("#addMovieContainer").dialog( "close" );
 				//console.log(event.target);
 				const title = document.querySelector("[name='titleCreate']").value;
 				const year = document.querySelector("[name='yearCreate']").value;
@@ -238,14 +240,13 @@ window.onload=function(){
 
 				const movieAdded = new Movie();
 				movieAdded.addMovie(movieAddData);
-				$("#addMovieContainer").dialog( "close" );
 			})
 			
 			//register new user
 			const registerBtn = document.getElementById('signupbtn');
 			//console.log(registerBtn);
 			registerBtn.addEventListener("click", (event) => {
-				event.preventDefault();
+				$("#register").dialog("close");
 				const usernameRegister = document.querySelector('[name="username"]').value;	
 				const passwordRegister = document.querySelector('[name="pswR"]').value;
 				const dataRegister = {
@@ -253,11 +254,20 @@ window.onload=function(){
 					password:passwordRegister,
 				};
 				const userRegister = new User();
-				userRegister.registerData(dataRegister);
-				$("#register").dialog( "close" );
-			})			
-		}		
-	}
+				userRegister.registerData(dataRegister).then((response) => {
+					userRegister.sendLoginData(dataRegister)
+					//console.log(response);
+					let accessToken = response.accessToken;
+					localStorage.setItem('loginToken', accessToken);
+					happenAtLogedIn();	
+					$("#opener").hide();
+					$("#openerReg").hide();
+				}).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
+			});
+		};		
+	};
 
 	function errorMsg(xhr){
 		console.log('Something happened:',xhr);

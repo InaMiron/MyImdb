@@ -45,7 +45,7 @@ class Movies {
 		return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies?' + strUser + text, {
 			method : 'GET',
 			success : (response) => {
-				console.log("resonse", response.results);
+				console.log("methodResonse", response.results);
 				for(let i = 0; i < response.results.length; i++) {
 					const searchItem = response.results[i];
 					const searchModel = new Movie();
@@ -73,3 +73,6 @@ class Movies {
 	}
 	
 }
+
+
+
