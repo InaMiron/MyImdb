@@ -2,6 +2,7 @@ body {
     background: url("https://cdn.pixabay.com/photo/2016/09/16/00/15/white-1673016_960_720.jpg") no-repeat center fixed;
     background-size: cover;
     padding-bottom: 22px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .center-contain{
@@ -33,19 +34,33 @@ body {
     height:auto;
     padding-top: 10px;
 }
+.movieImg {
+    max-width: 350px;
+    float: left;
+    clear: right;
+    margin-right: 2%;
+}
 
 .movieDetailsContainer{
     overflow:auto;
 }
 .movieBox{
-    border: solid 3px black;
+    box-shadow: black 12px 10px 22px;
     display: inline-block;
     margin: 10px;
-    padding: 5px;
     max-width: 45%;
+    box-sizing: border-box;
 }
-
-
+.movieBox h3 {
+    text-shadow: black 12px 10px 20px;
+}
+.remove {
+    box-shadow: black 12px 10px 22px;
+    border: 0px;
+}
+.remove :hoover {
+    box-shadow: black 9px 8px 12px;
+}
 
 
 footer {
