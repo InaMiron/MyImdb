@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<div class="container sticky">
+<div class="container">
 			<div class="center-contain">
 				<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
 				<div id="searchBar" class="btn-group">
@@ -31,16 +31,16 @@
 					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
 					<label>Search movie by:</label>
              <select id = "myList">
-               <option id="titleSearch" selected="selected" value = "Title=">Title</option>
-               <option id="genreSearch" value = "Genre=">Genre</option>
-               <option id="yearSearch" value = "Year=">Year</option>
+               <option selected="selected" value = "Title=">Title</option>
+               <option value = "Genre=">Genre</option>
+               <option value = "Year=">Year</option>
              </select>
 				</div>
 			</div>
 			 
 			<div class="center-contain"> 
 				<div id="buttons" class="cbtn-group">
-					<button id="openerReg">Register now</button>
+					<button id="openerReg" class="movie-shadow">Register now</button>
 					<div id="register">
 						<p>Create account</p>
 						<label for="username"><b>Username</b></label>
@@ -50,7 +50,7 @@
 						<button type="submit" id="signupbtn">Sign Up</button>	
 					</div>
 
-					<button id="opener">Log in</button>
+					<button id="opener" class="movie-shadow">Log in</button>
 					<div id="login">			  	
 						<label for="uname"><b>Username</b></label>
 						<input type="text" placeholder="Enter Username" name="uname" required>
@@ -58,9 +58,9 @@
 						<input type="password" placeholder="Enter Password" name="psw" required>
 						<button type="submit" name="login">Login</button>	
 					</div>	
-					<button id="logout-button" class="invisible">Log Out </button>
+					<button id="logout-button" class="invisible movie-shadow">Log Out </button>
 
-					<button id="openerAdd" class="invisible">Add Movie</button>
+					<button id="openerAdd" class="invisible sh movie-shadow">Add Movie</button>
 					<div id="addMovieContainer">
 						<input type=text placeholder="Title" name="titleCreate">
 						<input type=text placeholder="Year" name="yearCreate">
@@ -82,13 +82,13 @@
 	  </div>
 	  <div class="invisible" id="editContainer">
 	  </div>
-	
+	  <div class="d-flex justify-content-center" id="pagination">
+		<div><a href="#" id="first" class="active">1</a></div>
+		<div><a href="#" id="second">2</a></div>
+		<div><a href="#" id="thirde">3</a></div>
+	</div>
 	<footer>
-		<div class="d-flex justify-content-center" id="pagination">
-			<div><a href="#" id="first" class="active">1</a></div>
-			<div><a href="#" id="second">2</a></div>
-			<div><a href="#" id="thirde">3</a></div>
-		</div>
+		<p>© 2018 - Fiii Ploii bestDevelopmentTeam | All rights reserved.</p>
 	</footer>
 </body>
 </html>
