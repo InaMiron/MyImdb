@@ -195,6 +195,8 @@ window.onload=function(){
 			//Submit button
 			const loginButton = document.querySelector("[name='login']");
 			loginButton.addEventListener("click", (event) => {
+				$("#opener").hide();
+				$("#login").dialog( "close" );
 				event.preventDefault();
 				
 				console.log(event.target);
@@ -211,8 +213,7 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
-					$("#opener").hide();
-					$("#login").dialog( "close" );
+					
 				});
 			})
 
@@ -220,6 +221,7 @@ window.onload=function(){
 			const addMovieButton = document.querySelector("[name='addMovie']");
 			//console.log(addMovieButton);
 			addMovieButton.addEventListener("click", (event) => {
+				$("#addMovieContainer").dialog( "close" );
 				//console.log(event.target);
 				const title = document.querySelector("[name='titleCreate']").value;
 				const year = document.querySelector("[name='yearCreate']").value;
@@ -238,13 +240,14 @@ window.onload=function(){
 
 				const movieAdded = new Movie();
 				movieAdded.addMovie(movieAddData);
-				$("#addMovieContainer").dialog( "close" );
+				
 			})
 			
 			//register new user
 			const registerBtn = document.getElementById('signupbtn');
 			//console.log(registerBtn);
 			registerBtn.addEventListener("click", (event) => {
+				$("#register").dialog( "close" );
 				event.preventDefault();
 				const usernameRegister = document.querySelector('[name="username"]').value;	
 				const passwordRegister = document.querySelector('[name="pswR"]').value;
@@ -254,7 +257,7 @@ window.onload=function(){
 				};
 				const userRegister = new User();
 				userRegister.registerData(dataRegister);
-				$("#register").dialog( "close" );
+
 			})			
 		}		
 	}
