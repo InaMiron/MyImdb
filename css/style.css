@@ -88,8 +88,7 @@ footer {
 }
 
 #pagination a.active {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #d49e00;
 }
 
 #pagination a:hover:not(.active) {background-color: #ddd;}
