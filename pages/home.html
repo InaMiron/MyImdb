@@ -24,23 +24,24 @@
 <body>
 
 <div class="container sticky">
+			<div class="container">
 			<div class="center-contain">
 				<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
 				<div id="searchBar" class="btn-group">
 					<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
 					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
-					<span>Search by:</span>
-	             <select id = "myList">
-	               <option id="titleSearch" value = "Title=">Title</option>  
-	               <option id="genreSearch" value = "Genre=">Genre</option>
-	               <option id="yearSearch" value = "Year=">Year</option>
-	             </select>
-
+					<label>Search movie by:</label>
+             <select id = "myList">
+               <option selected="selected" value = "Title=">Title</option>
+               <option value = "Genre=">Genre</option>
+               <option value = "Year=">Year</option>
+             </select>
 				</div>
 			</div>
+
 			 
-				<div id="buttons" class="center-contain">
-					<button id="openerReg">Register now</button>
+				<div id="buttons" class="btn-group center-contain">
+					<button id="openerReg" class="movie-shadow">Register now</button>
 					<div id="register">
 						<p>Create account</p>
 						<label for="username"><b>Username</b></label>
@@ -50,7 +51,7 @@
 						<button type="submit" id="signupbtn" class="movie-shadow">Sign Up</button>	
 					</div>
 
-					<button id="opener">Log in</button>
+					<button id="opener" class="movie-shadow">Log in</button>
 					<div id="login">			  	
 						<label for="uname"><b>Username</b></label>
 						<input type="text" placeholder="Enter Username" name="uname" required>
@@ -58,9 +59,9 @@
 						<input type="password" placeholder="Enter Password" name="psw" required>
 						<button type="submit" name="login" class="movie-shadow">Login</button>	
 					</div>	
-					<button id="logout-button" class="hidden">Log Out </button>
+					<button id="logout-button" class="hidden movie-shadow">Log Out </button>
 
-					<button id="openerAdd" class="hidden">Add Movie</button>
+					<button id="openerAdd" class="hidden sh movie-shadow">Add Movie</button>
 					<div id="addMovieContainer">
 						<input type=text placeholder="Title" name="titleCreate">
 						<input type=text placeholder="Year" name="yearCreate">
@@ -69,10 +70,7 @@
 						<input type=text placeholder="Image URL" name="posterCreate">
 						<button type="submit" name="addMovie" class="movie-shadow">Add Movie</button>
 					</div>
-			</div>
-		
-			
-		</div>
+</div>
 
 		<div class="container">
 			 <div id="movieListContainer" class="row">
