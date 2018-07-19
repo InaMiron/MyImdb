@@ -9,7 +9,8 @@ class User {
 			method:"POST",
 			data: data,
 			success:(response) => {
-				//console.log(response);
+				console.log(data);
+				alert('Welcome, ' + data.username + " !");
 			},
 			error:(xhr) => {
 				const parsedMessage = JSON.parse(xhr.responseText);
@@ -25,7 +26,7 @@ class User {
 			method:"GET",
 			headers:{'X-Auth-Token':localStorage.getItem('loginToken')},
 			success:(response)=>{
-				console.log("Logout message is : ",response);
+				alert(response.message);
 			},
 			error:(xhr)=>{
 				const parsedMessage = JSON.parse(xhr.responseText);
@@ -53,4 +54,3 @@ class User {
 
 
 };
-

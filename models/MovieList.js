@@ -40,7 +40,9 @@ class Movies {
 
 	searchData(text) {
 		this.itemList = [];
-		return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies?Title=' + text, {
+		var e = document.getElementById("myList");
+        var strUser = e.options[e.selectedIndex].value;
+		return $.ajax('https://ancient-caverns-16784.herokuapp.com/movies?' + strUser + text, {
 			method : 'GET',
 			success : (response) => {
 				console.log("resonse", response.results);
@@ -71,4 +73,3 @@ class Movies {
 	}
 	
 }
-
