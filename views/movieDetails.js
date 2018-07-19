@@ -212,6 +212,7 @@ window.onload=function(){
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
 					$("#opener").hide();
+					$("#login").dialog( "close" );
 				});
 			})
 
@@ -237,6 +238,7 @@ window.onload=function(){
 
 				const movieAdded = new Movie();
 				movieAdded.addMovie(movieAddData);
+				$("#addMovieContainer").dialog( "close" );
 			})
 			
 			//register new user
@@ -252,6 +254,7 @@ window.onload=function(){
 				};
 				const userRegister = new User();
 				userRegister.registerData(dataRegister);
+				$("#register").dialog( "close" );
 			})			
 		}		
 	}

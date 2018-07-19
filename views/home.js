@@ -69,6 +69,8 @@ function Onloaded(){
 		//Submit button
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
+			$("#opener").hide();
+			$("#login").dialog( "close" );
 			event.preventDefault();
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
@@ -85,7 +87,7 @@ function Onloaded(){
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
 				happenAtLogedIn();
-				$("#opener").hide();
+				
 			});
 		})
 
@@ -94,6 +96,7 @@ function Onloaded(){
 		const addMovieButton = document.querySelector("[name='addMovie']");
 		//console.log(addMovieButton);
 		addMovieButton.addEventListener("click", (event) => {
+			$("#addMovieContainer").dialog( "close" );
 			//console.log(event.target);
 			const title = document.querySelector("[name='titleCreate']").value;
 			const year = document.querySelector("[name='yearCreate']").value;
@@ -112,6 +115,7 @@ function Onloaded(){
 
 			const movieAdded = new Movie();
 			movieAdded.addMovie(movieAddData);
+			
 		})
 		
 		//register new user
@@ -119,7 +123,7 @@ function Onloaded(){
 		//console.log(registerBtn);
 		registerBtn.addEventListener("click", (event) => {
 			event.preventDefault();
-			$( "#register" ).dialog( "close" );
+			$("#register").dialog("close");
 			const usernameRegister = document.querySelector('[name="username"]').value;	
 			const passwordRegister = document.querySelector('[name="pswR"]').value;
 			const dataRegister = {
@@ -128,6 +132,7 @@ function Onloaded(){
 			};
 			const userRegister = new User();
 			userRegister.registerData(dataRegister);
+			
 		})
 		//search button
 		const searchBtn = document.getElementById("navbar-submit-button");
@@ -185,7 +190,7 @@ let token = localStorage.getItem("loginToken");
       },
       hide: {
         effect: "explode",
-        duration: 1000
+        duration: 300
       }
 	});
  
@@ -202,7 +207,7 @@ $( "#opener" ).on( "click", function() {
       },
       hide: {
         effect: "explode",
-        duration: 1000
+        duration: 300
       }
     });
 });
@@ -221,7 +226,7 @@ $( "#openerReg" ).on( "click", function() {
       },
       hide: {
         effect: "explode",
-        duration: 1000
+        duration: 300
       }
 	});
 });
