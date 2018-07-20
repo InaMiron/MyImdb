@@ -242,7 +242,11 @@ window.onload=function(){
 				}
 
 				const movieAdded = new Movie();
-				movieAdded.addMovie(movieAddData);
+				movieAdded.addMovie(movieAddData).then(() => {
+					window.location.replace("home.html");
+				}).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 			})
 			
 			//register new user
