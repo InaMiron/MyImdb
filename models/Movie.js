@@ -124,8 +124,8 @@ class MovieDetails extends Movie{
 
             },
             error: (xhr) => {
-              console.log(xhr);
-
+              const parsedMessage = JSON.parse(xhr.responseText);
+              alert('STATUS ' + xhr.status + '. ' + parsedMessage.message);
             }
 
           });
