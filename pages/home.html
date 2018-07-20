@@ -22,67 +22,66 @@
 
 </head>
 <body>
-
-<div class="container sticky">
-			<div class="container">
-			<div class="center-contain">
-				<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
-				<div id="searchBar" class="btn-group">
-					<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
-					<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
-					<label>Search movie by:</label>
-             <select id = "myList">
-               <option selected="selected" value = "Title=">Title</option>
-               <option value = "Genre=">Genre</option>
-               <option value = "Year=">Year</option>
-             </select>
-				</div>
+	<div class="container">
+		<div class="center-contain">
+			<img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon">
+			<div id="searchBar" class="btn-group">
+				<input id="searchBarInput" type="text" placeholder="Find Movies, TV shows, Celebrities and more...">
+				<button id="navbar-submit-button" type="submit"><span><i class="material-icons">search</i></span></button>
+				<label>Search movie by:</label>
+	             <select id = "myList">
+	               <option selected="selected" value = "Title=">Title</option>
+	               <option value = "Genre=">Genre</option>
+	               <option value = "Year=">Year</option>
+	             </select>
 			</div>
+		</div>
 
 			 
-				<div id="buttons" class="btn-group center-contain">
-					<button id="openerReg" class="movie-shadow">Register now</button>
-					<div id="register">
-						<p>Create account</p>
-						<label for="username"><b>Username</b></label>
-						<input type="text" name="username" value="" placeholder="Enter Username" required>
-						<label for="psw"><b>Password</b></label>
-						<input type="password" placeholder="Enter Password" name="pswR" required>
-						<button type="submit" id="signupbtn" class="movie-shadow">Sign Up</button>	
-					</div>
+		<div id="buttons" class="btn-group center-contain">
+			<button id="openerReg" class="movie-shadow">Register now</button>
+			<div id="register">
+				<p>Create account</p>
+				<label for="username"><b>Username</b></label>
+				<input type="text" name="username" value="" placeholder="Enter Username" required>
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="pswR" required>
+				<button type="submit" id="signupbtn" class="movie-shadow">Sign Up</button>	
+			</div>
 
-					<button id="opener" class="movie-shadow">Log in</button>
-					<div id="login">			  	
-						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" required>
-						<label for="psw"><b>Password</b></label>
-						<input type="password" placeholder="Enter Password" name="psw" required>
-						<button type="submit" name="login" class="movie-shadow">Login</button>	
-					</div>	
-					<button id="logout-button" class="movie-shadow">Log Out </button>
+			<button id="opener" class="movie-shadow">Log in</button>
+			<div id="login">			  	
+				<label for="uname"><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="uname" required>
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="psw" required>
+				<button type="submit" name="login" class="movie-shadow">Login</button>	
+			</div>	
+			<button id="logout-button" class="movie-shadow">Log Out </button>
 
-					<button id="openerAdd" class="sh movie-shadow">Add Movie</button>
-					<div id="addMovieContainer">
-						<input type=text placeholder="Title" name="titleCreate">
-						<input type=text placeholder="Year" name="yearCreate">
-						<input type=text placeholder="Type" name="typeCreate">
-						<input type=text placeholder="Genre" name="genreCreate">
-						<input type=text placeholder="Image URL" name="posterCreate">
-						<button type="submit" name="addMovie" class="movie-shadow">Add Movie</button>
-					</div>
-</div>
+			<button id="openerAdd" class="sh movie-shadow">Add Movie</button>
+			<div id="addMovieContainer">
+				<input type=text placeholder="Title" name="titleCreate">
+				<input type=text placeholder="Year" name="yearCreate">
+				<input type=text placeholder="Type" name="typeCreate">
+				<input type=text placeholder="Genre" name="genreCreate">
+				<input type=text placeholder="Image URL" name="posterCreate">
+				<button type="submit" name="addMovie" class="movie-shadow">Add Movie</button>
+			</div>
+		</div>
 
 		<div class="container">
 			 <div id="movieListContainer" class="row">
 
 			 </div>
-	  </div>
-	  <div class="d-flex justify-content-center" id="pagination">
-		<div><a href="#" id="first" class="active">1</a></div>
-		<div><a href="#" id="second">2</a></div>
-		<div><a href="#" id="thirde">3</a></div>
+		</div>
+		<div class="d-flex justify-content-center" id="pagination">
+			<div><a href="#" id="first" class="active">1</a></div>
+			<div><a href="#" id="second">2</a></div>
+			<div><a href="#" id="thirde">3</a></div>
+		</div>
 	</div>
-	
+
 	<footer>
 		<p>© 2018 - Fiii Ploii bestDevelopmentTeam | All rights reserved.</p>
 	</footer>
