@@ -256,15 +256,15 @@ $( "#openerAdd" ).on( "click", function() {
 function happenAtLogedIn () {
 	const tokenForLogIn = localStorage.getItem('loginToken');
 	if (tokenForLogIn) {
-		document.getElementById("logout-button").classList.remove("invisible");
-		document.getElementById("openerAdd").classList.remove("invisible");
-		document.getElementById("opener").classList.add("invisible");
-		document.getElementById("openerReg").classList.add("invisible");
+		document.getElementById("logout-button").classList.remove("d-none");
+		document.getElementById("openerAdd").classList.remove("d-none");
+		document.getElementById("opener").classList.add("d-none");
+		document.getElementById("openerReg").classList.add("d-none");
 	} else {
-		document.getElementById("logout-button").classList.add("invisible");
-		document.getElementById("openerAdd").classList.add("invisible");
-		document.getElementById("opener").classList.remove("invisible");
-		document.getElementById("openerReg").classList.remove("invisible");
+		document.getElementById("logout-button").classList.add("d-none");
+		document.getElementById("openerAdd").classList.add("d-none");
+		document.getElementById("opener").classList.remove("d-none");
+		document.getElementById("openerReg").classList.remove("d-none");
 	};
 }
 

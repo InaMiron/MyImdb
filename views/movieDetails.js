@@ -287,8 +287,8 @@ window.onload=function(){
 	function logedInWithEdit () {
 	const tokenForLogIn = localStorage.getItem('loginToken');
 	if (tokenForLogIn) {
-		document.getElementById("editContainer").classList.remove("invisible");
+		document.getElementById("editContainer").classList.remove("d-none");
 	} else {
-		document.getElementById("editContainer").classList.add("invisible");
+		document.getElementById("editContainer").classList.add("d-none");
 	};
 }
