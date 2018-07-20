@@ -1,8 +1,8 @@
 window.onload=Onloaded;
 
 function Onloaded(){
-
-	happenAtLogedIn ();	
+	happenAtLogedIn ();
+	toggleDeleteBtn()	
 	//logOut
 	const logoutUser=new User();
 	const logoutButton=document.getElementById('logout-button');
@@ -15,10 +15,11 @@ function Onloaded(){
 	function logoutUsers(){
 		localStorage.clear();
 		happenAtLogedIn();
+		toggleDeleteBtn();
 	}
 
 	function logoutError(xhr){
-	console.log("error",xhr);
+		console.log("error",xhr);
 	}
 
 
@@ -46,9 +47,9 @@ function Onloaded(){
 				"<button data-id="+item._id+" class='remove btn btn-danger'>Delete</button>";
 				containElements.appendChild(boxMovie);
 			}
+		toggleDeleteBtn();
 		//delete function should be outside the for cycle
 		$("#movieListContainer").delegate('.remove','click',function (){
-			if(localStorage.getItem('loginToken')) {
 				const id=this.getAttribute('data-id');
 				//console.log(id);
 				const deleteMovie=new Movie();
@@ -59,9 +60,6 @@ function Onloaded(){
 				.catch(function(xhr){
 					console.log('Error!:',xhr);
 				});
-				} else {
-				alert("You need to login to delete this movie!")
-				}
 			});
 		};
 		//Log In functionality
@@ -82,7 +80,8 @@ function Onloaded(){
 				//console.log(response);
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
-				happenAtLogedIn();	
+				happenAtLogedIn();
+				toggleDeleteBtn();	
 			}).catch(function(xhr){
 					console.log('Error!:',xhr);
 				});;
@@ -132,7 +131,8 @@ function Onloaded(){
 				//console.log(response);
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
-				happenAtLogedIn();	
+				happenAtLogedIn();
+				toggleDeleteBtn();	
 			}).catch(function(xhr){
 					console.log('Error!:',xhr);
 				});	
@@ -266,5 +266,15 @@ function happenAtLogedIn () {
 		document.getElementById("opener").classList.remove("d-none");
 		document.getElementById("openerReg").classList.remove("d-none");
 	};
-}
+};
+
+//toggle delete buttons
+function toggleDeleteBtn() {
+	if (localStorage.getItem('loginToken')) {
+				$(".remove").show();
+
+	} else {
+			$(".remove").hide();
+	};
+};		
 
