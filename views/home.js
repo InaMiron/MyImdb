@@ -38,7 +38,7 @@ function Onloaded(){
 
 				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
 
-				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_self' class='movieImg'>"+
+				boxMovie.innerHTML="<a href="+ basepath +"pages/movieDetails.html?movieId="+item._id+" target='_self' class='movieImg'>"+
 				"<img src="+item.Poster+"alt='404' width='200px'>"+"</a>"+
 				"<h3>"+item.Title+"</h3>"+
 				"<p>"+item.Genre+"</p>"+

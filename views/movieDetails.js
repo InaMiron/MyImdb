@@ -188,7 +188,7 @@ window.onload=function(){
 			function logoutUsers(){
 				localStorage.clear();
 				happenAtLogedIn();
-				document.getElementById("editContainer").classList.add("invisible");
+				logedInWithEdit ();
 			}
 
 			function logoutError(xhr){
@@ -214,7 +214,7 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
-					logedInWithEdit ()
+					logedInWithEdit ();
 				}).catch(function(xhr){
 					console.log('Error!:',xhr);
 					});
@@ -289,8 +289,7 @@ window.onload=function(){
 	};
 
 	function logedInWithEdit () {
-	const tokenForLogIn = localStorage.getItem('loginToken');
-	if (tokenForLogIn) {
+		if (localStorage.getItem('loginToken')) {
 		document.getElementById("editContainer").classList.remove("d-none");
 	} else {
 		document.getElementById("editContainer").classList.add("d-none");
