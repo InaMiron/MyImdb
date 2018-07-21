@@ -1,7 +1,7 @@
 
 #movieDetailsContainer {
   overflow:hidden;
-  width:80%;
+  width:60%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background:rgba(240, 240, 240, 0.6);
   border-radius: 25px;
@@ -11,23 +11,27 @@
 }
 
 #divCont {
-	
 	overflow:hidden;
 	padding-top:0;
 	padding-bottom: 1.2px;
 	border-bottom: 1.5px solid grey;
 }
+	
 
 #divContTwo {
+	overflow-wrap: break-word;
 	margin-left:0px;
+	padding-left: 5px;
 	border-right: 1.5px solid grey;
 	float:left;
 	width:50%;
 }
 
 #divContThree {
+	overflow-wrap: break-word;
 	width:50%;
 	float:right;
+	padding-left:5px;
 
 }
 
@@ -50,6 +54,20 @@
     padding: 2%;
 }
 
+#postRatings {
+	overflow:hidden;
+	
+}
+
+#postRatings ul {
+	font-weight: bold;
+}
+
+span {
+    color: #000000;
+	font-weight: bold;
+}
+
 footer {
     
     left: 0;
@@ -70,10 +88,7 @@ h3 {
 	  color: #fff;
   }
 	
-#divider { 
-  width: 60%;
-  margin: 5px 0 5px 0;
- } 
+
   
   
 .imgMovie {
@@ -129,14 +144,17 @@ p {
   margin-right: 0px;
 }
   
-@media (max-width: 1373px) {
-  h3 {
-	 border-radius: 19px 21px 2px 2px;
+/*@media (max-width: 569px) {
+  #postRatings {
+	 display:flex;
+	 flex-shrink: 15;
+  }
+}*/
+/*
+@media (max-width: 441px) {
+ 	.imgMovie {
+	display: block;
+    margin: 0 auto;
   }
 }
-	  
-#divider { 
-width: 60%;
-margin: 5px 0 5px 0;
-} 
-		  
+	  */

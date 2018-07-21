@@ -1,6 +1,5 @@
 window.onload=function(){
 	happenAtLogedIn ()
-	logedInWithEdit ()
 	//declaring a new object for the movie details
 	const currentMovie=new MovieDetails();
 	//using an id parameter from code below
@@ -77,7 +76,7 @@ window.onload=function(){
 			postYear.innerHTML= "<span>Year</span>: " + "&nbsp;" + currentMovie.Year;
 
 			const postBoxOffice=document.createElement('p');
-			postBoxOffice.innerHTML= "&nbsp;" + "<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
+			postBoxOffice.innerHTML="<span>BoxOffice</span>: " + "&nbsp;" + currentMovie.BoxOffice;
 
 			const postDVD=document.createElement('p');
 			postDVD.innerHTML= "<span>Dvd</span>: " + "&nbsp;" + currentMovie.DVD;
@@ -91,7 +90,7 @@ window.onload=function(){
 			const postWebsite=document.createElement('a');
 			postWebsite.setAttribute('href',currentMovie.Website);
 			postWebsite.setAttribute('target','blank');
-			postWebsite.innerHTML="<span>Movie website</span>:</a> " + "&nbsp;" + currentMovie.Website+'<br>';
+			postWebsite.innerHTML="<span>Movie website:</span>" + "&nbsp;" + currentMovie.Website+'<br></a> ';
 
 
 			
@@ -102,24 +101,24 @@ window.onload=function(){
 			divCont.appendChild(postTitle);
 			divCont.appendChild(postPoster);
 			divCont.appendChild(postPlot);
-			divCont.appendChild(postYear);
+			divCont.appendChild(postReleased);
 			divCont.appendChild(postGenre);
 			divCont.appendChild(postActors);
 			divCont.appendChild(postRuntime);
 			divCont.appendChild(postLanguage);
 			divCont.appendChild(postCountry);
 			// postDetailsContainer.appendChild(breakPoint);
-			divContThree.appendChild(postProduction);
-			divContThree.appendChild(postType);
-			divContTwo.appendChild(postDVD);
 			divContTwo.appendChild(postMetascore);
-			divContThree.appendChild(postBoxOffice);
-			divContThree.appendChild(postAwards);
-			divContThree.appendChild(postRated);
-			divContThree.appendChild(postReleased);
 			divContTwo.appendChild(postimdbRating);
 			divContTwo.appendChild(postimdbVotes);
-			divContTwo.appendChild(postWebsite);
+			divContTwo.appendChild(postAwards);
+			divContTwo.appendChild(postRated);
+			divContThree.appendChild(postYear);
+			divContThree.appendChild(postDVD);
+			divContThree.appendChild(postWebsite);
+			divContThree.appendChild(postProduction);
+			divContThree.appendChild(postType);
+			divContThree.appendChild(postBoxOffice);
 
 
 			//EDIT 
@@ -180,6 +179,7 @@ window.onload=function(){
 			const logoutUser=new User();
 			const logoutButton=document.getElementById('logout-button');
 			logoutButton.addEventListener('click',(e)=>{
+				e.preventDefault();
 				logoutUser.SendLogoutData()
 				.then(logoutUsers)
 				.catch(logoutError);
@@ -188,7 +188,7 @@ window.onload=function(){
 			function logoutUsers(){
 				localStorage.clear();
 				happenAtLogedIn();
-				logedInWithEdit ();
+				$("#opener").show();
 			}
 
 			function logoutError(xhr){
@@ -199,7 +199,8 @@ window.onload=function(){
 			//Submit button
 			const loginButton = document.querySelector("[name='login']");
 			loginButton.addEventListener("click", (event) => {
-				$("#login").dialog( "close" );
+				event.preventDefault();
+				
 				console.log(event.target);
 				const userName = document.querySelector("[name='uname']").value;
 				const password = document.querySelector("[name='psw']").value;
@@ -214,17 +215,14 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
-					logedInWithEdit ();
-				}).catch(function(xhr){
-					console.log('Error!:',xhr);
-					});
-			});
+					$("#opener").hide();
+				});
+			})
 
 			//Add Movie 
 			const addMovieButton = document.querySelector("[name='addMovie']");
 			//console.log(addMovieButton);
 			addMovieButton.addEventListener("click", (event) => {
-				$("#addMovieContainer").dialog( "close" );
 				//console.log(event.target);
 				const title = document.querySelector("[name='titleCreate']").value;
 				const year = document.querySelector("[name='yearCreate']").value;
@@ -242,18 +240,14 @@ window.onload=function(){
 				}
 
 				const movieAdded = new Movie();
-				movieAdded.addMovie(movieAddData).then(() => {
-					window.location.replace("home.html");
-				}).catch(function(xhr){
-					console.log('Error!:',xhr);
-				});
+				movieAdded.addMovie(movieAddData);
 			})
 			
 			//register new user
 			const registerBtn = document.getElementById('signupbtn');
 			//console.log(registerBtn);
 			registerBtn.addEventListener("click", (event) => {
-				$("#register").dialog("close");
+				event.preventDefault();
 				const usernameRegister = document.querySelector('[name="username"]').value;	
 				const passwordRegister = document.querySelector('[name="pswR"]').value;
 				const dataRegister = {
@@ -261,19 +255,10 @@ window.onload=function(){
 					password:passwordRegister,
 				};
 				const userRegister = new User();
-				userRegister.registerData(dataRegister).then((response) => {
-					userRegister.sendLoginData(dataRegister)
-					//console.log(response);
-					let accessToken = response.accessToken;
-					localStorage.setItem('loginToken', accessToken);
-					happenAtLogedIn();	
-					logedInWithEdit ()
-				}).catch(function(xhr){
-					console.log('Error!:',xhr);
-				});
-			});
-		};		
-	};
+				userRegister.registerData(dataRegister);
+			})			
+		}		
+	}
 
 	function errorMsg(xhr){
 		console.log('Something happened:',xhr);
@@ -287,11 +272,3 @@ window.onload=function(){
 	const results = regex.exec(location.search);
 	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 	};
-
-	function logedInWithEdit () {
-		if (localStorage.getItem('loginToken')) {
-		document.getElementById("editContainer").classList.remove("d-none");
-	} else {
-		document.getElementById("editContainer").classList.add("d-none");
-	};
-}
