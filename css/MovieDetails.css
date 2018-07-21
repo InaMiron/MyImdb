@@ -144,17 +144,19 @@ p {
   margin-right: 0px;
 }
   
-/*@media (max-width: 569px) {
-  #postRatings {
-	 display:flex;
-	 flex-shrink: 15;
-  }
-}*/
-/*
-@media (max-width: 441px) {
+
+@media (max-width: 457px) {
  	.imgMovie {
 	display: block;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto
   }
 }
-	  */
+
+@media (max-width: 457px) {
+	#divCont p {
+		float:left;
+    	
+	}
+}
+	  

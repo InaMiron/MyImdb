@@ -37,6 +37,7 @@ window.onload=function(){
 			postPoster.classList.add('imgMovie');
 
 			const postPlot=document.createElement('p');
+			postPlot.setAttribute('id', 'postPlot');
 			postPlot.innerHTML= "<span>Plot</span>:" + "&nbsp;" + currentMovie.Plot;
 			
 			const postActors=document.createElement('p');
