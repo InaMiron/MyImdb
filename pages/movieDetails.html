@@ -24,8 +24,8 @@
 		<div class="container">
 			<a href="home.html"><img id="imdbicon" src="../images/IMDb_icon.png" alt="IMDb_icon"></a>
 
-			<div id="buttons" class="pull-left btn-group">
-				<button id="openerReg">Register now</button>
+			<div id="buttons" class="btn-group" >
+				<button id="openerReg" class="movie-shadow yellowBtn">Register now</button>
 				<div id="register">
 					<p>Create account</p>
 					<label for="username"><b>Username</b></label>
@@ -35,7 +35,7 @@
 					<button type="submit" id="signupbtn">Sign Up</button>	
 				</div>
 
-				<button id="opener">Log in</button>
+				<button id="opener" class="movie-shadow yellowBtn">Log in</button>
 				<div id="login">			  	
 					<label for="uname"><b>Username</b></label>
 					<input type="text" placeholder="Enter Username" name="uname" required>
@@ -43,9 +43,9 @@
 					<input type="password" placeholder="Enter Password" name="psw" required>
 					<button type="submit" name="login">Login</button>	
 				</div>	
-				<button id="logout-button" class="invisible">Log Out </button>
+				<button id="logout-button" class="movie-shadow yellowBtn"">Log Out </button>
 
-				<button id="openerAdd" class="invisible">Add Movie</button>
+				<button id="openerAdd" class="movie-shadow yellowBtn">Add Movie</button>
 				<div id="addMovieContainer">
 					<input type=text placeholder="Title" name="titleCreate">
 					<input type=text placeholder="Year" name="yearCreate">
@@ -56,9 +56,9 @@
 				</div>
 
 			</div>
-			<div class="invisible" id="editContainer">
-				 <button id="edit-button"> Edit </button>
-		  		 <button id="save-changes"> Save </button>
+			<div id="editContainer">
+				 <button id="edit-button" class="movie-shadow yellowBtn"> Edit </button>
+		  		 <button id="save-changes" class="movie-shadow yellowBtn"> Save </button>
 		  		 <input type="text" placeholder="Movie Name" name="movieName">
 		  		 <input type="year" placeholder="Movie Year" name="movieYear">
 		  		 <input type="text" placeholder="Movie Type" name="movieType"> 

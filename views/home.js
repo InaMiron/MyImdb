@@ -1,8 +1,8 @@
 window.onload=Onloaded;
 
 function Onloaded(){
-
-	happenAtLogedIn ();	
+	happenAtLogedIn ();
+	toggleDeleteBtn()	
 	//logOut
 	const logoutUser=new User();
 	const logoutButton=document.getElementById('logout-button');
@@ -15,11 +15,11 @@ function Onloaded(){
 	function logoutUsers(){
 		localStorage.clear();
 		happenAtLogedIn();
-		$("#opener").show();
+		toggleDeleteBtn();
 	}
 
 	function logoutError(xhr){
-	console.log("error",xhr);
+		console.log("error",xhr);
 	}
 
 
@@ -38,7 +38,7 @@ function Onloaded(){
 
 				boxMovie.setAttribute('class','movieBox col-md-6 col-sm-12 col-xs-12');
 
-				boxMovie.innerHTML="<a href="+basepath+"pages/movieDetails.html?movieId="+item._id+" target='_self' class='movieImg'>"+
+				boxMovie.innerHTML="<a href="+ basepath +"pages/movieDetails.html?movieId="+item._id+" target='_self' class='movieImg'>"+
 				"<img src="+item.Poster+"alt='404' width='200px'>"+"</a>"+
 				"<h3>"+item.Title+"</h3>"+
 				"<p>"+item.Genre+"</p>"+
@@ -47,9 +47,9 @@ function Onloaded(){
 				"<button data-id="+item._id+" class='remove btn btn-danger'>Delete</button>";
 				containElements.appendChild(boxMovie);
 			}
+		toggleDeleteBtn();
 		//delete function should be outside the for cycle
 		$("#movieListContainer").delegate('.remove','click',function (){
-			if(localStorage.getItem('loginToken')) {
 				const id=this.getAttribute('data-id');
 				//console.log(id);
 				const deleteMovie=new Movie();
@@ -60,18 +60,13 @@ function Onloaded(){
 				.catch(function(xhr){
 					console.log('Error!:',xhr);
 				});
-				} else {
-				alert("You need to login to delete this movie!")
-				}
 			});
 		};
 		//Log In functionality
 		//Submit button
 		const loginButton = document.querySelector("[name='login']");
 		loginButton.addEventListener("click", (event) => {
-			$("#opener").hide();
 			$("#login").dialog( "close" );
-			event.preventDefault();
 			console.log(event.target);
 			const userName = document.querySelector("[name='uname']").value;
 			const password = document.querySelector("[name='psw']").value;
@@ -82,13 +77,14 @@ function Onloaded(){
 			const currentUserLogin = new User(); 
 			//console.log(currentUserLogin);
 			currentUserLogin.sendLoginData(dataUser).then((response) => {
-
 				//console.log(response);
 				let accessToken = response.accessToken;
 				localStorage.setItem('loginToken', accessToken);
 				happenAtLogedIn();
-				
-			});
+				toggleDeleteBtn();	
+			}).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});;
 		})
 
 
@@ -122,7 +118,6 @@ function Onloaded(){
 		const registerBtn = document.getElementById('signupbtn');
 		//console.log(registerBtn);
 		registerBtn.addEventListener("click", (event) => {
-			event.preventDefault();
 			$("#register").dialog("close");
 			const usernameRegister = document.querySelector('[name="username"]').value;	
 			const passwordRegister = document.querySelector('[name="pswR"]').value;
@@ -131,18 +126,34 @@ function Onloaded(){
 				password:passwordRegister,
 			};
 			const userRegister = new User();
-			userRegister.registerData(dataRegister);
-			
-		})
+			userRegister.registerData(dataRegister).then((response) => {
+				userRegister.sendLoginData(dataRegister)
+				//console.log(response);
+				let accessToken = response.accessToken;
+				localStorage.setItem('loginToken', accessToken);
+				happenAtLogedIn();
+				toggleDeleteBtn();	
+			}).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});	
+		});
 		//search button
 		const searchBtn = document.getElementById("navbar-submit-button");
 		searchBtn.addEventListener("click",(event) => {
 			event.preventDefault();
+			document.getElementById("first").classList.add("active");
+			document.getElementById("thirde").classList.remove("active");
+			document.getElementById("second").classList.remove("active");
 			containElements.innerHTML = '';
 			const searchText = document.getElementById('searchBarInput').value;
 			//console.log("text search", searchText);
-			viewData.searchData(searchText).then(createMovieList);
-		})
+			viewData.searchData(searchText).then(() => {
+				createMovieList();
+				document.getElementById("pagination").classList.add("invisible");
+			}).catch(function(xhr){
+					console.log('Error!:',xhr);
+			});
+		});
 
 		// pagination functions
 		document.getElementById("first").addEventListener("click", (e) => {
@@ -151,7 +162,9 @@ function Onloaded(){
 			document.getElementById("first").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
-			viewData.getMovies(0).then(createMovieList);
+			viewData.getMovies(0).then(createMovieList).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 		});
 		
 		document.getElementById("second").addEventListener("click", (e) => {
@@ -160,7 +173,9 @@ function Onloaded(){
 			document.getElementById("second").classList.add("active");
 			event.preventDefault();
 		    containElements.innerHTML = '';
-			viewData.getMovies(10).then(createMovieList);
+			viewData.getMovies(10).then(createMovieList).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 		});	
 
 		document.getElementById("thirde").addEventListener("click", (e) => {
@@ -169,7 +184,9 @@ function Onloaded(){
 			document.getElementById("thirde").classList.add("active");
 			event.preventDefault();
 			containElements.innerHTML = '';
-			viewData.getMovies(20).then(createMovieList);
+			viewData.getMovies(20).then(createMovieList).catch(function(xhr){
+					console.log('Error!:',xhr);
+				});
 		});	
 	}
 	
@@ -239,13 +256,25 @@ $( "#openerAdd" ).on( "click", function() {
 function happenAtLogedIn () {
 	const tokenForLogIn = localStorage.getItem('loginToken');
 	if (tokenForLogIn) {
-		document.getElementById("logout-button").classList.remove("invisible");
-		document.getElementById("openerAdd").classList.remove("invisible");
-		document.getElementById("editContainer").classList.remove("invisible");
+		document.getElementById("logout-button").classList.remove("d-none");
+		document.getElementById("openerAdd").classList.remove("d-none");
+		document.getElementById("opener").classList.add("d-none");
+		document.getElementById("openerReg").classList.add("d-none");
 	} else {
-		document.getElementById("logout-button").classList.add("invisible");
-		document.getElementById("openerAdd").classList.add("invisible");
-		document.getElementById("editContainer").classList.add("invisible");
+		document.getElementById("logout-button").classList.add("d-none");
+		document.getElementById("openerAdd").classList.add("d-none");
+		document.getElementById("opener").classList.remove("d-none");
+		document.getElementById("openerReg").classList.remove("d-none");
 	};
-}
+};
+
+//toggle delete buttons
+function toggleDeleteBtn() {
+	if (localStorage.getItem('loginToken')) {
+				$(".remove").show();
+
+	} else {
+			$(".remove").hide();
+	};
+};		
 

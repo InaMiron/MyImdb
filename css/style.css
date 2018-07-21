@@ -8,7 +8,10 @@ body {
 
 .center-contain{
     width:100%;
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 }
 #navbar-submit-button {
     border: 0px;
@@ -38,16 +41,16 @@ body {
 
 #searchBar {
     padding: 2%;
-    width: 60%;
+    width: 80%;
     height:70px;
 }
 
-#searchBar span{
+#searchBar span{S
     margin:0 2.5px;
 }
 
 #searchBarInput {
-    width: 70%;
+    width: 45%;
 }
 
 #buttons {
