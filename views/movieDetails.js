@@ -189,11 +189,7 @@ window.onload=function(){
 			function logoutUsers(){
 				localStorage.clear();
 				happenAtLogedIn();
-<<<<<<< HEAD
 				$("#opener").show();
-=======
-				logedInWithEdit ();
->>>>>>> 3327ea3... final form js
 			}
 
 			function logoutError(xhr){
@@ -220,17 +216,9 @@ window.onload=function(){
 					let accessToken = response.accessToken;
 					localStorage.setItem('loginToken', accessToken);
 					happenAtLogedIn();
-<<<<<<< HEAD
 					$("#opener").hide();
 				});
 			})
-=======
-					logedInWithEdit ();
-				}).catch(function(xhr){
-					console.log('Error!:',xhr);
-					});
-			});
->>>>>>> 3327ea3... final form js
 
 			//Add Movie 
 			const addMovieButton = document.querySelector("[name='addMovie']");
@@ -284,16 +272,4 @@ window.onload=function(){
 	const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
 	const results = regex.exec(location.search);
 	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-<<<<<<< HEAD
 	};
-=======
-	};
-
-	function logedInWithEdit () {
-		if (localStorage.getItem('loginToken')) {
-		document.getElementById("editContainer").classList.remove("d-none");
-	} else {
-		document.getElementById("editContainer").classList.add("d-none");
-	};
-}
->>>>>>> 3327ea3... final form js
