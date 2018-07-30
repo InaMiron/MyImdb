@@ -1,1 +1,1 @@
-# fiiireloaded
+A collaborative project that uses API calls to generate a movie list and display detailed movie pages. Users can register, login, logout and perfom various actions such as search movies, create, update and delete depending on their authenticated status.
